@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Nexar</title>
 
   <style>
@@ -23,5 +24,412 @@
       padding:20px;
     }
 
-    .screen{
-      background:#f5ead
+    .card{
+      background:#f7e9d7;
+      width:350px;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      font-size:40px;
+      margin-bottom:20px;
+      color:#333;
+    }
+
+    h2{
+      margin-bottom:15px;
+      color:#444;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin-bottom:15px;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border:none;
+      border-radius:10px;
+      background:#4da6ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#1f8cff;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .grade-buttons button,
+    .subject-buttons button{
+      margin-bottom:10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN SCREEN -->
+
+  <div class="card" id="loginScreen">
+
+    <h1>Nexar</h1>
+
+    <input type="text" placeholder="Username">
+
+    <input type="password" placeholder="Password">
+
+    <button onclick="showMode()">Login</button>
+
+    <button onclick="showMode()">Sign Up</button>
+
+  </div>
+
+
+
+  <!-- MODE SCREEN -->
+
+  <div class="card hidden" id="modeScreen">
+
+    <h2>Choose Mode</h2>
+
+    <button onclick="showGrade('home')">
+      Play At Home
+    </button>
+
+    <button onclick="showGrade('school')">
+      Play At School
+    </button>
+
+  </div>
+
+
+
+  <!-- GRADE SCREEN -->
+
+  <div class="card hidden" id="gradeScreen">
+
+    <h2>Choose Grade</h2>
+
+    <div class="grade-buttons">
+
+      <button onclick="showSubjects()">
+        Grade 1
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 2
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 3
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 4
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 5
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 6
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- SUBJECT SCREEN -->
+
+  <div class="card hidden" id="subjectScreen">
+
+    <h2>Choose Subject</h2>
+
+    <div class="subject-buttons">
+
+      <button>
+        Math
+      </button>
+
+      <button>
+        English
+      </button>
+
+      <button>
+        Science
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    function showMode(){
+
+      document.getElementById("loginScreen").classList.add("hidden");
+
+      document.getElementById("modeScreen").classList.remove("hidden");
+
+    }
+
+
+    function showGrade(mode){
+
+      document.getElementById("modeScreen").classList.add("hidden");
+
+      document.getElementById("gradeScreen").classList.remove("hidden");
+
+    }
+
+
+    function showSubjects(){
+
+      document.getElementById("gradeScreen").classList.add("hidden");
+
+      document.getElementById("subjectScreen").classList.remove("hidden");
+
+    }
+
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nexar</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#9fe3f5;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .card{
+      background:#f7e9d7;
+      width:350px;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      font-size:40px;
+      margin-bottom:20px;
+      color:#333;
+    }
+
+    h2{
+      margin-bottom:15px;
+      color:#444;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin-bottom:15px;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border:none;
+      border-radius:10px;
+      background:#4da6ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#1f8cff;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .grade-buttons button,
+    .subject-buttons button{
+      margin-bottom:10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN SCREEN -->
+
+  <div class="card" id="loginScreen">
+
+    <h1>Nexar</h1>
+
+    <input type="text" placeholder="Username">
+
+    <input type="password" placeholder="Password">
+
+    <button onclick="showMode()">Login</button>
+
+    <button onclick="showMode()">Sign Up</button>
+
+  </div>
+
+
+
+  <!-- MODE SCREEN -->
+
+  <div class="card hidden" id="modeScreen">
+
+    <h2>Choose Mode</h2>
+
+    <button onclick="showGrade('home')">
+      Play At Home
+    </button>
+
+    <button onclick="showGrade('school')">
+      Play At School
+    </button>
+
+  </div>
+
+
+
+  <!-- GRADE SCREEN -->
+
+  <div class="card hidden" id="gradeScreen">
+
+    <h2>Choose Grade</h2>
+
+    <div class="grade-buttons">
+
+      <button onclick="showSubjects()">
+        Grade 1
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 2
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 3
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 4
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 5
+      </button>
+
+      <button onclick="showSubjects()">
+        Grade 6
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- SUBJECT SCREEN -->
+
+  <div class="card hidden" id="subjectScreen">
+
+    <h2>Choose Subject</h2>
+
+    <div class="subject-buttons">
+
+      <button>
+        Math
+      </button>
+
+      <button>
+        English
+      </button>
+
+      <button>
+        Science
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    function showMode(){
+
+      document.getElementById("loginScreen").classList.add("hidden");
+
+      document.getElementById("modeScreen").classList.remove("hidden");
+
+    }
+
+
+    function showGrade(mode){
+
+      document.getElementById("modeScreen").classList.add("hidden");
+
+      document.getElementById("gradeScreen").classList.remove("hidden");
+
+    }
+
+
+    function showSubjects(){
+
+      document.getElementById("gradeScreen").classList.add("hidden");
+
+      document.getElementById("subjectScreen").classList.remove("hidden");
+
+    }
+
+  </script>
+
+</body>
+</html>
