@@ -1,102 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Nexar</title>
+<title>Nexar</title>
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
 
-    body{
-      background:#9fe3f5;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      padding:20px;
-    }
+body{
+  background:#9fe3f5;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-    .card{
-      background:#f7e9d7;
-      width:350px;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-      box-shadow:0 5px 15px rgba(0,0,0,0.2);
-    }
+.container{
+  width:100%;
+  max-width:500px;
+}
 
-    h1{
-      font-size:40px;
-      margin-bottom:20px;
-      color:#333;
-    }
+.card{
+  background:#f5ead7;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
 
-    h2{
-      margin-bottom:15px;
-      color:#444;
-    }
+h1{
+  text-align:center;
+  font-size:45px;
+  margin-bottom:30px;
+  color:#333;
+}
 
-    input{
-      width:100%;
-      padding:12px;
-      margin-bottom:15px;
-      border:none;
-      border-radius:10px;
-      font-size:16px;
-    }
+.top-buttons{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
+}
 
-    button{
-      width:100%;
-      padding:12px;
-      margin-top:10px;
-      border:none;
-      border-radius:10px;
-      background:#4da6ff;
-      color:white;
-      font-size:16px;
-      cursor:pointer;
-      transition:0.3s;
-    }
+.top-buttons button{
+  flex:1;
+}
 
-    button:hover{
-      background:#1f8cff;
-    }
+input{
+  width:100%;
+  padding:15px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+}
 
-    .hidden{
-      display:none;
-    }
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-    .grade-buttons button,
-    .subject-buttons button{
-      margin-bottom:10px;
-    }
+.main-button{
+  background:#35b87f;
+  color:white;
+  margin-bottom:20px;
+}
 
-  </style>
+.main-button:hover{
+  background:#2ea16f;
+}
+
+.switch-button{
+  background:#4da6ff;
+  color:white;
+}
+
+.switch-button:hover{
+  background:#2c8cff;
+}
+
+.social-title{
+  text-align:center;
+  margin-bottom:15px;
+  color:#555;
+}
+
+.social-buttons{
+  display:flex;
+  gap:15px;
+}
+
+.google{
+  background:white;
+  color:#333;
+  border:2px solid #ddd;
+}
+
+.clever{
+  background:white;
+  color:#333;
+  border:2px solid #ddd;
+}
+
+.hidden{
+  display:none;
+}
+
+.mode-buttons button,
+.grade-buttons button,
+.subject-buttons button{
+  margin-bottom:12px;
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- LOGIN SCREEN -->
+<div class="container">
 
-  <div class="card" id="loginScreen">
+  <!-- LOGIN / SIGNUP SCREEN -->
 
-    <h1>Nexar</h1>
+  <div class="card" id="authScreen">
 
-    <input type="text" placeholder="Username">
+    <h1>Welcome to Nexar</h1>
 
-    <input type="password" placeholder="Password">
+    <div class="top-buttons">
+      <button class="switch-button" onclick="showLogin()">
+        Login
+      </button>
 
-    <button onclick="showMode()">Login</button>
+      <button class="switch-button" onclick="showSignup()">
+        Sign Up
+      </button>
+    </div>
 
-    <button onclick="showMode()">Sign Up</button>
+
+    <!-- LOGIN FORM -->
+
+    <div id="loginForm">
+
+      <input type="text" placeholder="Username">
+
+      <input type="password" placeholder="Password">
+
+      <button class="main-button" onclick="showMode()">
+        Login
+      </button>
+
+    </div>
+
+
+    <!-- SIGNUP FORM -->
+
+    <div id="signupForm" class="hidden">
+
+      <input type="text" placeholder="Create Username">
+
+      <input type="password" placeholder="Create Password">
+
+      <button class="main-button" onclick="showMode()">
+        Sign Up
+      </button>
+
+    </div>
+
+
+    <p class="social-title">
+      Or continue with
+    </p>
+
+    <div class="social-buttons">
+
+      <button class="google">
+        Google
+      </button>
+
+      <button class="clever">
+        Clever
+      </button>
+
+    </div>
 
   </div>
 
@@ -106,15 +201,19 @@
 
   <div class="card hidden" id="modeScreen">
 
-    <h2>Choose Mode</h2>
+    <h1>Choose Mode</h1>
 
-    <button onclick="showGrade('home')">
-      Play At Home
-    </button>
+    <div class="mode-buttons">
 
-    <button onclick="showGrade('school')">
-      Play At School
-    </button>
+      <button class="main-button" onclick="showGrade()">
+        Play At Home
+      </button>
+
+      <button class="main-button" onclick="showGrade()">
+        Play At School
+      </button>
+
+    </div>
 
   </div>
 
@@ -124,31 +223,31 @@
 
   <div class="card hidden" id="gradeScreen">
 
-    <h2>Choose Grade</h2>
+    <h1>Select Grade</h1>
 
     <div class="grade-buttons">
 
-      <button onclick="showSubjects()">
+      <button class="main-button" onclick="showSubjects()">
         Grade 1
       </button>
 
-      <button onclick="showSubjects()">
+      <button class="main-button" onclick="showSubjects()">
         Grade 2
       </button>
 
-      <button onclick="showSubjects()">
+      <button class="main-button" onclick="showSubjects()">
         Grade 3
       </button>
 
-      <button onclick="showSubjects()">
+      <button class="main-button" onclick="showSubjects()">
         Grade 4
       </button>
 
-      <button onclick="showSubjects()">
+      <button class="main-button" onclick="showSubjects()">
         Grade 5
       </button>
 
-      <button onclick="showSubjects()">
+      <button class="main-button" onclick="showSubjects()">
         Grade 6
       </button>
 
@@ -162,19 +261,19 @@
 
   <div class="card hidden" id="subjectScreen">
 
-    <h2>Choose Subject</h2>
+    <h1>Choose Subject</h1>
 
     <div class="subject-buttons">
 
-      <button>
+      <button class="main-button">
         Math
       </button>
 
-      <button>
+      <button class="main-button">
         English
       </button>
 
-      <button>
+      <button class="main-button">
         Science
       </button>
 
@@ -182,254 +281,53 @@
 
   </div>
 
+</div>
 
 
-  <script>
 
-    function showMode(){
+<script>
 
-      document.getElementById("loginScreen").classList.add("hidden");
+function showSignup(){
 
-      document.getElementById("modeScreen").classList.remove("hidden");
+  document.getElementById("loginForm").classList.add("hidden");
 
-    }
+  document.getElementById("signupForm").classList.remove("hidden");
 
+}
 
-    function showGrade(mode){
+function showLogin(){
 
-      document.getElementById("modeScreen").classList.add("hidden");
+  document.getElementById("signupForm").classList.add("hidden");
 
-      document.getElementById("gradeScreen").classList.remove("hidden");
+  document.getElementById("loginForm").classList.remove("hidden");
 
-    }
+}
 
+function showMode(){
 
-    function showSubjects(){
+  document.getElementById("authScreen").classList.add("hidden");
 
-      document.getElementById("gradeScreen").classList.add("hidden");
+  document.getElementById("modeScreen").classList.remove("hidden");
 
-      document.getElementById("subjectScreen").classList.remove("hidden");
+}
 
-    }
+function showGrade(){
 
-  </script>
+  document.getElementById("modeScreen").classList.add("hidden");
 
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  document.getElementById("gradeScreen").classList.remove("hidden");
 
-  <title>Nexar</title>
+}
 
-  <style>
+function showSubjects(){
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+  document.getElementById("gradeScreen").classList.add("hidden");
 
-    body{
-      background:#9fe3f5;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      padding:20px;
-    }
+  document.getElementById("subjectScreen").classList.remove("hidden");
 
-    .card{
-      background:#f7e9d7;
-      width:350px;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-      box-shadow:0 5px 15px rgba(0,0,0,0.2);
-    }
+}
 
-    h1{
-      font-size:40px;
-      margin-bottom:20px;
-      color:#333;
-    }
-
-    h2{
-      margin-bottom:15px;
-      color:#444;
-    }
-
-    input{
-      width:100%;
-      padding:12px;
-      margin-bottom:15px;
-      border:none;
-      border-radius:10px;
-      font-size:16px;
-    }
-
-    button{
-      width:100%;
-      padding:12px;
-      margin-top:10px;
-      border:none;
-      border-radius:10px;
-      background:#4da6ff;
-      color:white;
-      font-size:16px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    button:hover{
-      background:#1f8cff;
-    }
-
-    .hidden{
-      display:none;
-    }
-
-    .grade-buttons button,
-    .subject-buttons button{
-      margin-bottom:10px;
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <!-- LOGIN SCREEN -->
-
-  <div class="card" id="loginScreen">
-
-    <h1>Nexar</h1>
-
-    <input type="text" placeholder="Username">
-
-    <input type="password" placeholder="Password">
-
-    <button onclick="showMode()">Login</button>
-
-    <button onclick="showMode()">Sign Up</button>
-
-  </div>
-
-
-
-  <!-- MODE SCREEN -->
-
-  <div class="card hidden" id="modeScreen">
-
-    <h2>Choose Mode</h2>
-
-    <button onclick="showGrade('home')">
-      Play At Home
-    </button>
-
-    <button onclick="showGrade('school')">
-      Play At School
-    </button>
-
-  </div>
-
-
-
-  <!-- GRADE SCREEN -->
-
-  <div class="card hidden" id="gradeScreen">
-
-    <h2>Choose Grade</h2>
-
-    <div class="grade-buttons">
-
-      <button onclick="showSubjects()">
-        Grade 1
-      </button>
-
-      <button onclick="showSubjects()">
-        Grade 2
-      </button>
-
-      <button onclick="showSubjects()">
-        Grade 3
-      </button>
-
-      <button onclick="showSubjects()">
-        Grade 4
-      </button>
-
-      <button onclick="showSubjects()">
-        Grade 5
-      </button>
-
-      <button onclick="showSubjects()">
-        Grade 6
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- SUBJECT SCREEN -->
-
-  <div class="card hidden" id="subjectScreen">
-
-    <h2>Choose Subject</h2>
-
-    <div class="subject-buttons">
-
-      <button>
-        Math
-      </button>
-
-      <button>
-        English
-      </button>
-
-      <button>
-        Science
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <script>
-
-    function showMode(){
-
-      document.getElementById("loginScreen").classList.add("hidden");
-
-      document.getElementById("modeScreen").classList.remove("hidden");
-
-    }
-
-
-    function showGrade(mode){
-
-      document.getElementById("modeScreen").classList.add("hidden");
-
-      document.getElementById("gradeScreen").classList.remove("hidden");
-
-    }
-
-
-    function showSubjects(){
-
-      document.getElementById("gradeScreen").classList.add("hidden");
-
-      document.getElementById("subjectScreen").classList.remove("hidden");
-
-    }
-
-  </script>
+</script>
 
 </body>
 </html>
