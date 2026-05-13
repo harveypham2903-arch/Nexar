@@ -27,6 +27,7 @@ body{
 .container{
   width:100%;
   max-width:500px;
+  position:relative;
 }
 
 .card{
@@ -34,7 +35,6 @@ body{
   padding:40px;
   border-radius:20px;
   box-shadow:0 6px 15px rgba(0,0,0,0.2);
-  position:relative;
 }
 
 h1{
@@ -113,16 +113,17 @@ button{
 }
 
 .home-button{
-  position:absolute;
-  top:15px;
-  left:15px;
+  position:fixed;
+  top:20px;
+  left:20px;
   width:auto;
-  padding:10px 16px;
+  padding:12px 18px;
   background:#ff8c42;
   color:white;
   border:none;
-  border-radius:10px;
-  font-size:15px;
+  border-radius:12px;
+  font-size:16px;
+  z-index:1000;
 }
 
 .home-button:hover{
@@ -139,6 +140,12 @@ button{
 </head>
 
 <body>
+
+<!-- HOME BUTTON -->
+
+<button class="home-button hidden" id="homeBtn" onclick="goHome()">
+  Home
+</button>
 
 <div class="container">
 
@@ -210,10 +217,6 @@ button{
 
   <div class="card hidden" id="modeScreen">
 
-    <button class="home-button" onclick="goHome()">
-      Home
-    </button>
-
     <h1>Choose Mode</h1>
 
     <div class="mode-buttons">
@@ -235,10 +238,6 @@ button{
   <!-- GRADE SCREEN -->
 
   <div class="card hidden" id="gradeScreen">
-
-    <button class="home-button" onclick="goHome()">
-      Home
-    </button>
 
     <h1>Select Grade</h1>
 
@@ -278,10 +277,6 @@ button{
 
   <div class="card hidden" id="subjectScreen">
 
-    <button class="home-button" onclick="goHome()">
-      Home
-    </button>
-
     <h1>Choose Subject</h1>
 
     <div class="subject-buttons">
@@ -307,6 +302,18 @@ button{
 
 
 <script>
+
+window.onload = function(){
+
+  let loggedIn = localStorage.getItem("loggedIn");
+
+  if(loggedIn === "true"){
+
+    showMode();
+
+  }
+
+}
 
 function showSignup(){
 
@@ -334,7 +341,11 @@ function signup(){
 
   localStorage.setItem("password", password);
 
+  localStorage.setItem("loggedIn", "true");
+
   alert("Account Created!");
+
+  showMode();
 
 }
 
@@ -349,6 +360,8 @@ function login(){
   let savedPass = localStorage.getItem("password");
 
   if(username === savedUser && password === savedPass){
+
+    localStorage.setItem("loggedIn", "true");
 
     showMode();
 
@@ -371,6 +384,8 @@ function showMode(){
   document.getElementById("authScreen").classList.add("hidden");
 
   document.getElementById("modeScreen").classList.remove("hidden");
+
+  document.getElementById("homeBtn").classList.remove("hidden");
 
 }
 
@@ -399,6 +414,10 @@ function goHome(){
   document.getElementById("subjectScreen").classList.add("hidden");
 
   document.getElementById("authScreen").classList.remove("hidden");
+
+  document.getElementById("homeBtn").classList.add("hidden");
+
+  localStorage.setItem("loggedIn", "false");
 
 }
 
