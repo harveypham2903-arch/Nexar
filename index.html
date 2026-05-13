@@ -74,7 +74,7 @@ button{
 .main-button{
   background:#35b87f;
   color:white;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 
 .main-button:hover{
@@ -90,27 +90,20 @@ button{
   background:#2c8cff;
 }
 
-.social-title{
-  text-align:center;
-  margin-bottom:15px;
-  color:#555;
-}
-
-.social-buttons{
-  display:flex;
-  gap:15px;
-}
-
 .google{
   background:white;
   color:#333;
   border:2px solid #ddd;
 }
 
-.clever{
-  background:white;
-  color:#333;
-  border:2px solid #ddd;
+.google:hover{
+  background:#f1f1f1;
+}
+
+.social-title{
+  text-align:center;
+  margin-bottom:15px;
+  color:#555;
 }
 
 .hidden{
@@ -137,6 +130,7 @@ button{
     <h1>Welcome to Nexar</h1>
 
     <div class="top-buttons">
+
       <button class="switch-button" onclick="showLogin()">
         Login
       </button>
@@ -144,54 +138,50 @@ button{
       <button class="switch-button" onclick="showSignup()">
         Sign Up
       </button>
+
     </div>
+
 
 
     <!-- LOGIN FORM -->
 
     <div id="loginForm">
 
-      <input type="text" placeholder="Username">
+      <input type="text" id="loginUser" placeholder="Username">
 
-      <input type="password" placeholder="Password">
+      <input type="password" id="loginPass" placeholder="Password">
 
-      <button class="main-button" onclick="showMode()">
+      <button class="main-button" onclick="login()">
         Login
       </button>
 
     </div>
 
 
+
     <!-- SIGNUP FORM -->
 
     <div id="signupForm" class="hidden">
 
-      <input type="text" placeholder="Create Username">
+      <input type="text" id="signupUser" placeholder="Create Username">
 
-      <input type="password" placeholder="Create Password">
+      <input type="password" id="signupPass" placeholder="Create Password">
 
-      <button class="main-button" onclick="showMode()">
+      <button class="main-button" onclick="signup()">
         Sign Up
       </button>
 
     </div>
 
 
+
     <p class="social-title">
-      Or continue with
+      Continue with Google
     </p>
 
-    <div class="social-buttons">
-
-      <button class="google">
-        Google
-      </button>
-
-      <button class="clever">
-        Clever
-      </button>
-
-    </div>
+    <button class="google" onclick="fakeGoogleLogin()">
+      Google
+    </button>
 
   </div>
 
@@ -205,11 +195,11 @@ button{
 
     <div class="mode-buttons">
 
-      <button class="main-button" onclick="showGrade()">
+      <button class="main-button" onclick="showGrade('home')">
         Play At Home
       </button>
 
-      <button class="main-button" onclick="showGrade()">
+      <button class="main-button" onclick="showGrade('school')">
         Play At School
       </button>
 
@@ -303,6 +293,48 @@ function showLogin(){
 
 }
 
+function signup(){
+
+  let username = document.getElementById("signupUser").value;
+
+  let password = document.getElementById("signupPass").value;
+
+  localStorage.setItem("username", username);
+
+  localStorage.setItem("password", password);
+
+  alert("Account Created!");
+
+}
+
+function login(){
+
+  let username = document.getElementById("loginUser").value;
+
+  let password = document.getElementById("loginPass").value;
+
+  let savedUser = localStorage.getItem("username");
+
+  let savedPass = localStorage.getItem("password");
+
+  if(username === savedUser && password === savedPass){
+
+    showMode();
+
+  } else {
+
+    alert("Wrong username or password");
+
+  }
+
+}
+
+function fakeGoogleLogin(){
+
+  alert("Google Login Coming Soon!");
+
+}
+
 function showMode(){
 
   document.getElementById("authScreen").classList.add("hidden");
@@ -311,7 +343,7 @@ function showMode(){
 
 }
 
-function showGrade(){
+function showGrade(mode){
 
   document.getElementById("modeScreen").classList.add("hidden");
 
