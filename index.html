@@ -221,11 +221,11 @@ button{
 
     <div class="mode-buttons">
 
-      <button class="main-button" onclick="showGrade('home')">
+      <button class="main-button" onclick="showGrade()">
         Play At Home
       </button>
 
-      <button class="main-button" onclick="showGrade('school')">
+      <button class="main-button" onclick="showGrade()">
         Play At School
       </button>
 
@@ -243,28 +243,16 @@ button{
 
     <div class="grade-buttons">
 
-      <button class="main-button" onclick="showSubjects()">
+      <button class="main-button" onclick="selectGrade('grade1')">
         Grade 1
       </button>
 
-      <button class="main-button" onclick="showSubjects()">
+      <button class="main-button" onclick="selectGrade('grade2')">
         Grade 2
       </button>
 
-      <button class="main-button" onclick="showSubjects()">
+      <button class="main-button" onclick="selectGrade('grade3')">
         Grade 3
-      </button>
-
-      <button class="main-button" onclick="showSubjects()">
-        Grade 4
-      </button>
-
-      <button class="main-button" onclick="showSubjects()">
-        Grade 5
-      </button>
-
-      <button class="main-button" onclick="showSubjects()">
-        Grade 6
       </button>
 
     </div>
@@ -281,15 +269,15 @@ button{
 
     <div class="subject-buttons">
 
-      <button class="main-button">
+      <button class="main-button" onclick="selectSubject('math')">
         Math
       </button>
 
-      <button class="main-button">
-        English
+      <button class="main-button" onclick="selectSubject('english')">
+        Language Arts
       </button>
 
-      <button class="main-button">
+      <button class="main-button" onclick="selectSubject('science')">
         Science
       </button>
 
@@ -299,129 +287,8 @@ button{
 
 </div>
 
-
-
-<script>
-
-window.onload = function(){
-
-  let loggedIn = localStorage.getItem("loggedIn");
-
-  if(loggedIn === "true"){
-
-    showMode();
-
-  }
-
-}
-
-function showSignup(){
-
-  document.getElementById("loginForm").classList.add("hidden");
-
-  document.getElementById("signupForm").classList.remove("hidden");
-
-}
-
-function showLogin(){
-
-  document.getElementById("signupForm").classList.add("hidden");
-
-  document.getElementById("loginForm").classList.remove("hidden");
-
-}
-
-function signup(){
-
-  let username = document.getElementById("signupUser").value;
-
-  let password = document.getElementById("signupPass").value;
-
-  localStorage.setItem("username", username);
-
-  localStorage.setItem("password", password);
-
-  localStorage.setItem("loggedIn", "true");
-
-  alert("Account Created!");
-
-  showMode();
-
-}
-
-function login(){
-
-  let username = document.getElementById("loginUser").value;
-
-  let password = document.getElementById("loginPass").value;
-
-  let savedUser = localStorage.getItem("username");
-
-  let savedPass = localStorage.getItem("password");
-
-  if(username === savedUser && password === savedPass){
-
-    localStorage.setItem("loggedIn", "true");
-
-    showMode();
-
-  } else {
-
-    alert("Wrong username or password");
-
-  }
-
-}
-
-function fakeGoogleLogin(){
-
-  alert("Google Login Coming Soon!");
-
-}
-
-function showMode(){
-
-  document.getElementById("authScreen").classList.add("hidden");
-
-  document.getElementById("modeScreen").classList.remove("hidden");
-
-  document.getElementById("homeBtn").classList.remove("hidden");
-
-}
-
-function showGrade(mode){
-
-  document.getElementById("modeScreen").classList.add("hidden");
-
-  document.getElementById("gradeScreen").classList.remove("hidden");
-
-}
-
-function showSubjects(){
-
-  document.getElementById("gradeScreen").classList.add("hidden");
-
-  document.getElementById("subjectScreen").classList.remove("hidden");
-
-}
-
-function goHome(){
-
-  document.getElementById("modeScreen").classList.add("hidden");
-
-  document.getElementById("gradeScreen").classList.add("hidden");
-
-  document.getElementById("subjectScreen").classList.add("hidden");
-
-  document.getElementById("authScreen").classList.remove("hidden");
-
-  document.getElementById("homeBtn").classList.add("hidden");
-
-  localStorage.setItem("loggedIn", "false");
-
-}
-
-</script>
+<script src="questions.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
