@@ -12,7 +12,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
@@ -24,11 +24,31 @@ body{
   padding:20px;
 }
 
+/* HOME BUTTON */
+
+.home-button{
+  position:fixed;
+  top:20px;
+  left:20px;
+  background:#ff8c42;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  z-index:1000;
+}
+
+.hidden{
+  display:none;
+}
+
 .container{
   width:100%;
-  max-width:500px;
-  position:relative;
+  max-width:700px;
 }
+
+/* CARDS */
 
 .card{
   background:#f5ead7;
@@ -39,48 +59,25 @@ body{
 
 h1{
   text-align:center;
-  font-size:40px;
   margin-bottom:30px;
   color:#333;
 }
 
-.top-buttons{
-  display:flex;
-  gap:10px;
-  margin-bottom:25px;
-}
-
-.top-buttons button{
-  flex:1;
-}
-
-input{
-  width:100%;
-  padding:15px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-}
+/* BUTTONS */
 
 button{
   width:100%;
   padding:15px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
+  margin-bottom:12px;
   font-size:18px;
   cursor:pointer;
-  transition:0.3s;
 }
 
 .main-button{
   background:#35b87f;
   color:white;
-  margin-bottom:12px;
-}
-
-.main-button:hover{
-  background:#2ea16f;
 }
 
 .switch-button{
@@ -88,52 +85,114 @@ button{
   color:white;
 }
 
-.switch-button:hover{
-  background:#2c8cff;
-}
-
 .google{
   background:white;
-  color:#333;
   border:2px solid #ddd;
 }
 
-.google:hover{
-  background:#f1f1f1;
-}
+/* INPUTS */
 
-.social-title{
-  text-align:center;
+input{
+  width:100%;
+  padding:15px;
   margin-bottom:15px;
-  color:#555;
-}
-
-.hidden{
-  display:none;
-}
-
-.home-button{
-  position:fixed;
-  top:20px;
-  left:20px;
-  width:auto;
-  padding:12px 18px;
-  background:#ff8c42;
-  color:white;
   border:none;
   border-radius:12px;
   font-size:16px;
-  z-index:1000;
 }
 
-.home-button:hover{
-  background:#ff741f;
+/* TOP BUTTONS */
+
+.top-buttons{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
 }
 
-.mode-buttons button,
-.grade-buttons button,
-.subject-buttons button{
-  margin-bottom:12px;
+/* BATTLE SCREEN */
+
+.battle-screen{
+  background:#7fd0e8;
+  width:100%;
+  height:650px;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ENEMY */
+
+.enemy{
+  position:absolute;
+  top:60px;
+  right:80px;
+  text-align:center;
+}
+
+.enemy img{
+  width:180px;
+}
+
+.enemy-health{
+  background:red;
+  width:180px;
+  height:20px;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+/* PLAYER */
+
+.player{
+  position:absolute;
+  bottom:180px;
+  left:80px;
+  text-align:center;
+}
+
+.player img{
+  width:180px;
+}
+
+.player-health{
+  background:green;
+  width:180px;
+  height:20px;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+/* QUESTION BOX */
+
+.question-box{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#f5ead7;
+  padding:25px;
+  border-top:5px solid #333;
+}
+
+.question-text{
+  font-size:28px;
+  margin-bottom:20px;
+  font-weight:bold;
+}
+
+.answer-row{
+  display:flex;
+  gap:10px;
+}
+
+.answer-row input{
+  flex:1;
+  margin-bottom:0;
+}
+
+.answer-row button{
+  width:180px;
+  margin-bottom:0;
 }
 
 </style>
@@ -141,154 +200,560 @@ button{
 
 <body>
 
-<!-- HOME BUTTON -->
+<button class="home-button hidden"
+        id="homeBtn"
+        onclick="goHome()">
 
-<button class="home-button hidden" id="homeBtn" onclick="goHome()">
-  Home
+Home
+
 </button>
 
 <div class="container">
 
-  <!-- LOGIN / SIGNUP SCREEN -->
+<!-- LOGIN SCREEN -->
 
-  <div class="card" id="authScreen">
+<div class="card" id="authScreen">
 
-    <h1>Welcome to Nexar</h1>
+<h1>Welcome to Nexar</h1>
 
-    <div class="top-buttons">
+<div class="top-buttons">
 
-      <button class="switch-button" onclick="showLogin()">
-        Login
-      </button>
+<button class="switch-button"
+        onclick="showLogin()">
 
-      <button class="switch-button" onclick="showSignup()">
-        Sign Up
-      </button>
+Login
 
-    </div>
+</button>
 
+<button class="switch-button"
+        onclick="showSignup()">
 
+Sign Up
 
-    <!-- LOGIN FORM -->
+</button>
 
-    <div id="loginForm">
+</div>
 
-      <input type="text" id="loginUser" placeholder="Username">
+<!-- LOGIN -->
 
-      <input type="password" id="loginPass" placeholder="Password">
+<div id="loginForm">
 
-      <button class="main-button" onclick="login()">
-        Login
-      </button>
+<input type="text"
+       id="loginUser"
+       placeholder="Username">
 
-    </div>
+<input type="password"
+       id="loginPass"
+       placeholder="Password">
 
+<button class="main-button"
+        onclick="login()">
 
+Login
 
-    <!-- SIGNUP FORM -->
+</button>
 
-    <div id="signupForm" class="hidden">
+</div>
 
-      <input type="text" id="signupUser" placeholder="Create Username">
+<!-- SIGNUP -->
 
-      <input type="password" id="signupPass" placeholder="Create Password">
+<div id="signupForm" class="hidden">
 
-      <button class="main-button" onclick="signup()">
-        Sign Up
-      </button>
+<input type="text"
+       id="signupUser"
+       placeholder="Create Username">
 
-    </div>
+<input type="password"
+       id="signupPass"
+       placeholder="Create Password">
 
+<button class="main-button"
+        onclick="signup()">
 
+Create Account
 
-    <p class="social-title">
-      Continue with Google
-    </p>
+</button>
 
-    <button class="google" onclick="fakeGoogleLogin()">
-      Google
-    </button>
+</div>
 
-  </div>
+<p style="text-align:center;margin:20px 0;">
+Continue with Google
+</p>
 
+<button class="google"
+        onclick="fakeGoogleLogin()">
 
+Google
 
-  <!-- MODE SCREEN -->
+</button>
 
-  <div class="card hidden" id="modeScreen">
+</div>
 
-    <h1>Choose Mode</h1>
+<!-- MODE SCREEN -->
 
-    <div class="mode-buttons">
+<div class="card hidden"
+     id="modeScreen">
 
-      <button class="main-button" onclick="showGrade()">
-        Play At Home
-      </button>
+<h1>Choose Mode</h1>
 
-      <button class="main-button" onclick="showGrade()">
-        Play At School
-      </button>
+<button class="main-button"
+        onclick="showGrade()">
 
-    </div>
+Play At Home
 
-  </div>
+</button>
 
+<button class="main-button"
+        onclick="showGrade()">
 
+Play At School
 
-  <!-- GRADE SCREEN -->
+</button>
 
-  <div class="card hidden" id="gradeScreen">
+</div>
 
-    <h1>Select Grade</h1>
+<!-- GRADE SCREEN -->
 
-    <div class="grade-buttons">
+<div class="card hidden"
+     id="gradeScreen">
 
-      <button class="main-button" onclick="selectGrade('grade1')">
-        Grade 1
-      </button>
+<h1>Select Grade</h1>
 
-      <button class="main-button" onclick="selectGrade('grade2')">
-        Grade 2
-      </button>
+<button class="main-button"
+        onclick="selectGrade('grade1')">
 
-      <button class="main-button" onclick="selectGrade('grade3')">
-        Grade 3
-      </button>
+Grade 1
 
-    </div>
+</button>
 
-  </div>
+<button class="main-button"
+        onclick="selectGrade('grade2')">
 
+Grade 2
 
+</button>
 
-  <!-- SUBJECT SCREEN -->
+<button class="main-button"
+        onclick="selectGrade('grade3')">
 
-  <div class="card hidden" id="subjectScreen">
+Grade 3
 
-    <h1>Choose Subject</h1>
+</button>
 
-    <div class="subject-buttons">
+</div>
 
-      <button class="main-button" onclick="selectSubject('math')">
-        Math
-      </button>
+<!-- SUBJECT SCREEN -->
 
-      <button class="main-button" onclick="selectSubject('english')">
-        Language Arts
-      </button>
+<div class="card hidden"
+     id="subjectScreen">
 
-      <button class="main-button" onclick="selectSubject('science')">
-        Science
-      </button>
+<h1>Choose Subject</h1>
 
-    </div>
+<button class="main-button"
+        onclick="selectSubject('math')">
 
-  </div>
+Math
+
+</button>
+
+<button class="main-button"
+        onclick="selectSubject('english')">
+
+Language Arts
+
+</button>
+
+<button class="main-button"
+        onclick="selectSubject('science')">
+
+Science
+
+</button>
+
+</div>
+
+<!-- BATTLE SCREEN -->
+
+<div class="battle-screen hidden"
+     id="battleScreen">
+
+<!-- ENEMY -->
+
+<div class="enemy">
+
+<img src="https://i.imgur.com/9Xn4F6Y.png">
+
+<h2>Shadow Dragon</h2>
+
+<div class="enemy-health"
+     id="enemyHealth">
+
+</div>
+
+</div>
+
+<!-- PLAYER -->
+
+<div class="player">
+
+<img src="https://i.imgur.com/Yqz8D9B.png">
+
+<h2>Hero</h2>
+
+<div class="player-health"
+     id="playerHealth">
+
+</div>
+
+</div>
+
+<!-- QUESTION AREA -->
+
+<div class="question-box">
+
+<div class="question-text"
+     id="questionText">
+
+Question Here
+
+</div>
+
+<div class="answer-row">
+
+<input type="text"
+       id="answerInput"
+       placeholder="Type answer...">
+
+<button class="main-button"
+        onclick="checkAnswer()">
+
+Attack
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <script src="questions.js"></script>
-<script src="script.js"></script>
+
+<script>
+
+let selectedGrade = "";
+let selectedSubject = "";
+let currentQuestion = null;
+
+let enemyHP = 100;
+let playerHP = 100;
+
+/* BAD WORDS */
+
+const bannedWords = [
+  "sex",
+  "hate",
+  "kill",
+  "badword"
+];
+
+/* AUTO LOGIN */
+
+window.onload = function(){
+
+  let loggedIn =
+    localStorage.getItem("loggedIn");
+
+  if(loggedIn === "true"){
+
+    showMode();
+
+  }
+
+}
+
+/* LOGIN / SIGNUP */
+
+function showSignup(){
+
+  document.getElementById("loginForm")
+    .classList.add("hidden");
+
+  document.getElementById("signupForm")
+    .classList.remove("hidden");
+
+}
+
+function showLogin(){
+
+  document.getElementById("signupForm")
+    .classList.add("hidden");
+
+  document.getElementById("loginForm")
+    .classList.remove("hidden");
+
+}
+
+/* SIGNUP */
+
+function signup(){
+
+  let username =
+    document.getElementById("signupUser")
+    .value
+    .toLowerCase();
+
+  let password =
+    document.getElementById("signupPass")
+    .value;
+
+  if(username === "" || password === ""){
+
+    alert("Fill everything out.");
+
+    return;
+
+  }
+
+  for(let word of bannedWords){
+
+    if(username.includes(word)){
+
+      alert("Inappropriate username.");
+
+      return;
+
+    }
+
+  }
+
+  let existingUser =
+    localStorage.getItem("username");
+
+  if(username === existingUser){
+
+    alert("Username already exists.");
+
+    return;
+
+  }
+
+  localStorage.setItem("username", username);
+
+  localStorage.setItem("password", password);
+
+  localStorage.setItem("loggedIn", "true");
+
+  showMode();
+
+}
+
+/* LOGIN */
+
+function login(){
+
+  let username =
+    document.getElementById("loginUser")
+    .value
+    .toLowerCase();
+
+  let password =
+    document.getElementById("loginPass")
+    .value;
+
+  let savedUser =
+    localStorage.getItem("username");
+
+  let savedPass =
+    localStorage.getItem("password");
+
+  if(username === savedUser &&
+     password === savedPass){
+
+    localStorage.setItem("loggedIn", "true");
+
+    showMode();
+
+  }
+
+  else{
+
+    alert("Wrong username or password");
+
+  }
+
+}
+
+/* GOOGLE */
+
+function fakeGoogleLogin(){
+
+  alert("Google Login Coming Soon!");
+
+}
+
+/* MODE */
+
+function showMode(){
+
+  hideAll();
+
+  document.getElementById("modeScreen")
+    .classList.remove("hidden");
+
+  document.getElementById("homeBtn")
+    .classList.remove("hidden");
+
+}
+
+/* GRADE */
+
+function showGrade(){
+
+  hideAll();
+
+  document.getElementById("gradeScreen")
+    .classList.remove("hidden");
+
+}
+
+/* SELECT GRADE */
+
+function selectGrade(grade){
+
+  selectedGrade = grade;
+
+  hideAll();
+
+  document.getElementById("subjectScreen")
+    .classList.remove("hidden");
+
+}
+
+/* SUBJECT */
+
+function selectSubject(subject){
+
+  selectedSubject = subject;
+
+  startBattle();
+
+}
+
+/* START BATTLE */
+
+function startBattle(){
+
+  hideAll();
+
+  document.getElementById("battleScreen")
+    .classList.remove("hidden");
+
+  let questionList =
+    questions[selectedGrade][selectedSubject];
+
+  currentQuestion = questionList[0];
+
+  document.getElementById("questionText")
+    .innerText =
+    currentQuestion.question;
+
+}
+
+/* CHECK ANSWER */
+
+function checkAnswer(){
+
+  let answer =
+    document.getElementById("answerInput")
+    .value
+    .toLowerCase();
+
+  let correct =
+    currentQuestion.answer
+    .toLowerCase();
+
+  if(answer === correct){
+
+    enemyHP -= 25;
+
+    if(enemyHP < 0){
+
+      enemyHP = 0;
+
+    }
+
+    document.getElementById("enemyHealth")
+      .style.width =
+      enemyHP + "%";
+
+    alert("Correct Attack!");
+
+  }
+
+  else{
+
+    playerHP -= 25;
+
+    if(playerHP < 0){
+
+      playerHP = 0;
+
+    }
+
+    document.getElementById("playerHealth")
+      .style.width =
+      playerHP + "%";
+
+    alert("Wrong Answer!");
+
+  }
+
+  document.getElementById("answerInput")
+    .value = "";
+
+}
+
+/* HOME */
+
+function goHome(){
+
+  hideAll();
+
+  document.getElementById("authScreen")
+    .classList.remove("hidden");
+
+  document.getElementById("homeBtn")
+    .classList.add("hidden");
+
+  localStorage.setItem("loggedIn", "false");
+
+}
+
+/* HIDE ALL */
+
+function hideAll(){
+
+  document.getElementById("authScreen")
+    .classList.add("hidden");
+
+  document.getElementById("modeScreen")
+    .classList.add("hidden");
+
+  document.getElementById("gradeScreen")
+    .classList.add("hidden");
+
+  document.getElementById("subjectScreen")
+    .classList.add("hidden");
+
+  document.getElementById("battleScreen")
+    .classList.add("hidden");
+
+}
+
+</script>
 
 </body>
 </html>
