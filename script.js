@@ -1,7 +1,9 @@
 let selectedGrade = "";
 let selectedSubject = "";
+let currentQuestion = null;
 
-/* BAD WORD FILTER */
+
+/* BAD WORDS */
 
 const bannedWords = [
   "badword",
@@ -11,7 +13,7 @@ const bannedWords = [
 ];
 
 
-/* LOGIN SYSTEM */
+/* AUTO LOGIN */
 
 window.onload = function(){
 
@@ -26,35 +28,54 @@ window.onload = function(){
 }
 
 
+/* LOGIN / SIGNUP */
+
 function showSignup(){
 
-  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("loginForm")
+    .classList.add("hidden");
 
-  document.getElementById("signupForm").classList.remove("hidden");
+  document.getElementById("signupForm")
+    .classList.remove("hidden");
 
 }
 
 
 function showLogin(){
 
-  document.getElementById("signupForm").classList.add("hidden");
+  document.getElementById("signupForm")
+    .classList.add("hidden");
 
-  document.getElementById("loginForm").classList.remove("hidden");
+  document.getElementById("loginForm")
+    .classList.remove("hidden");
 
 }
 
 
-/* SIGN UP */
+/* SIGNUP */
 
 function signup(){
 
   let username =
-    document.getElementById("signupUser").value.toLowerCase();
+    document.getElementById("signupUser")
+    .value
+    .toLowerCase();
 
   let password =
-    document.getElementById("signupPass").value;
+    document.getElementById("signupPass")
+    .value;
 
-  /* CHECK BAD WORDS */
+  /* EMPTY CHECK */
+
+  if(username === "" || password === ""){
+
+    alert("Fill everything out.");
+
+    return;
+
+  }
+
+  /* BAD WORD CHECK */
 
   for(let word of bannedWords){
 
@@ -67,6 +88,21 @@ function signup(){
     }
 
   }
+
+  /* DUPLICATE ACCOUNT CHECK */
+
+  let existingUser =
+    localStorage.getItem("username");
+
+  if(username === existingUser){
+
+    alert("Username already exists.");
+
+    return;
+
+  }
+
+  /* SAVE ACCOUNT */
 
   localStorage.setItem("username", username);
 
@@ -86,10 +122,13 @@ function signup(){
 function login(){
 
   let username =
-    document.getElementById("loginUser").value.toLowerCase();
+    document.getElementById("loginUser")
+    .value
+    .toLowerCase();
 
   let password =
-    document.getElementById("loginPass").value;
+    document.getElementById("loginPass")
+    .value;
 
   let savedUser =
     localStorage.getItem("username");
@@ -113,7 +152,7 @@ function login(){
 }
 
 
-/* FAKE GOOGLE */
+/* GOOGLE */
 
 function fakeGoogleLogin(){
 
@@ -122,7 +161,7 @@ function fakeGoogleLogin(){
 }
 
 
-/* SCREENS */
+/* MODE */
 
 function showMode(){
 
@@ -136,6 +175,8 @@ function showMode(){
 
 }
 
+
+/* GRADE */
 
 function showGrade(){
 
@@ -167,17 +208,62 @@ function selectSubject(subject){
 
   selectedSubject = subject;
 
-  let questionData =
-    questions[selectedGrade][selectedSubject][0];
-
-  alert(
-    "Question: " + questionData.question
-  );
+  startQuestion();
 
 }
 
 
-/* HOME BUTTON */
+/* START QUESTION */
+
+function startQuestion(){
+
+  hideAllScreens();
+
+  document.getElementById("questionScreen")
+    .classList.remove("hidden");
+
+  let questionList =
+    questions[selectedGrade][selectedSubject];
+
+  currentQuestion = questionList[0];
+
+  document.getElementById("questionText")
+    .innerText =
+    currentQuestion.question;
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(){
+
+  let userAnswer =
+    document.getElementById("answerInput")
+    .value
+    .toLowerCase();
+
+  let correctAnswer =
+    currentQuestion.answer
+    .toLowerCase();
+
+  if(userAnswer === correctAnswer){
+
+    alert("Correct!");
+
+  } else {
+
+    alert(
+      "Wrong! Correct answer: " +
+      currentQuestion.answer
+    );
+
+  }
+
+}
+
+
+/* HOME */
 
 function goHome(){
 
@@ -208,6 +294,9 @@ function hideAllScreens(){
     .classList.add("hidden");
 
   document.getElementById("subjectScreen")
+    .classList.add("hidden");
+
+  document.getElementById("questionScreen")
     .classList.add("hidden");
 
 }
