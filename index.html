@@ -3,196 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Nexar</title>
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
 body{
-  background:#9fe3f5;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+    background:#9fe3f5;
+    min-height:100vh;
 }
 
 /* HOME BUTTON */
 
-.home-button{
-  position:fixed;
-  top:20px;
-  left:20px;
-  background:#ff8c42;
-  color:white;
-  border:none;
-  padding:12px 20px;
-  border-radius:12px;
-  cursor:pointer;
-  z-index:1000;
+.home-btn{
+    position:fixed;
+    top:15px;
+    left:15px;
+    padding:10px 16px;
+    border:none;
+    border-radius:10px;
+    background:#ff8c42;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    z-index:1000;
 }
 
-.hidden{
-  display:none;
+.home-btn:hover{
+    background:#ff741f;
 }
 
-.container{
-  width:100%;
-  max-width:700px;
+/* CENTER */
+
+.center{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
 }
 
-/* CARDS */
+/* CARD */
 
 .card{
-  background:#f5ead7;
-  padding:40px;
-  border-radius:20px;
-  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+    background:#f5ead7;
+    width:100%;
+    max-width:500px;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
 h1{
-  text-align:center;
-  margin-bottom:30px;
-  color:#333;
+    text-align:center;
+    margin-bottom:25px;
+    font-size:42px;
+    color:#333;
 }
-
-/* BUTTONS */
-
-button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  margin-bottom:12px;
-  font-size:18px;
-  cursor:pointer;
-}
-
-.main-button{
-  background:#35b87f;
-  color:white;
-}
-
-.switch-button{
-  background:#4da6ff;
-  color:white;
-}
-
-.google{
-  background:white;
-  border:2px solid #ddd;
-}
-
-/* INPUTS */
 
 input{
-  width:100%;
-  padding:15px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
 }
 
-/* TOP BUTTONS */
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.green{
+    background:#35b87f;
+    color:white;
+    margin-bottom:12px;
+}
+
+.green:hover{
+    background:#2ea16f;
+}
+
+.blue{
+    background:#4da6ff;
+    color:white;
+    margin-bottom:12px;
+}
+
+.hidden{
+    display:none;
+}
 
 .top-buttons{
-  display:flex;
-  gap:10px;
-  margin-bottom:20px;
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
 }
 
-/* BATTLE SCREEN */
+.top-buttons button{
+    flex:1;
+}
+
+/* BATTLE */
 
 .battle-screen{
-  background:#7fd0e8;
-  width:100%;
-  height:650px;
-  border-radius:20px;
-  position:relative;
-  overflow:hidden;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
 }
 
-/* ENEMY */
-
-.enemy{
-  position:absolute;
-  top:60px;
-  right:80px;
-  text-align:center;
-}
-
-.enemy img{
-  width:180px;
-}
-
-.enemy-health{
-  background:red;
-  width:180px;
-  height:20px;
-  border-radius:10px;
-  margin-top:10px;
+.battle-top{
+    flex:1;
+    position:relative;
+    padding:40px;
 }
 
 /* PLAYER */
 
 .player{
-  position:absolute;
-  bottom:180px;
-  left:80px;
-  text-align:center;
+    position:absolute;
+    left:80px;
+    bottom:40px;
+    text-align:center;
 }
 
 .player img{
-  width:180px;
+    width:180px;
 }
 
-.player-health{
-  background:green;
-  width:180px;
-  height:20px;
-  border-radius:10px;
-  margin-top:10px;
+/* ENEMY */
+
+.enemy{
+    position:absolute;
+    right:80px;
+    top:40px;
+    text-align:center;
+}
+
+.enemy img{
+    width:180px;
+}
+
+/* HP */
+
+.hp-bar{
+    width:160px;
+    height:20px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.hp-fill{
+    height:100%;
+    background:green;
 }
 
 /* QUESTION BOX */
 
 .question-box{
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#f5ead7;
-  padding:25px;
-  border-top:5px solid #333;
+    background:#f5ead7;
+    padding:30px;
+    border-top:5px solid #333;
 }
 
-.question-text{
-  font-size:28px;
-  margin-bottom:20px;
-  font-weight:bold;
+.question{
+    font-size:40px;
+    margin-bottom:20px;
+    font-weight:bold;
 }
 
 .answer-row{
-  display:flex;
-  gap:10px;
+    display:flex;
+    gap:10px;
 }
 
 .answer-row input{
-  flex:1;
-  margin-bottom:0;
+    margin-bottom:0;
 }
 
 .answer-row button{
-  width:180px;
-  margin-bottom:0;
+    width:200px;
 }
 
 </style>
@@ -200,235 +204,156 @@ input{
 
 <body>
 
-<button class="home-button hidden"
-        id="homeBtn"
-        onclick="goHome()">
-
+<button class="home-btn hidden" id="homeBtn" onclick="goHome()">
 Home
-
 </button>
 
-<div class="container">
+<div class="center">
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
 
-<div class="card" id="authScreen">
+<div class="card" id="loginScreen">
 
 <h1>Welcome to Nexar</h1>
 
 <div class="top-buttons">
-
-<button class="switch-button"
-        onclick="showLogin()">
-
-Login
-
-</button>
-
-<button class="switch-button"
-        onclick="showSignup()">
-
-Sign Up
-
-</button>
-
+<button class="blue" onclick="showLogin()">Login</button>
+<button class="blue" onclick="showSignup()">Sign Up</button>
 </div>
 
-<!-- LOGIN -->
+<!-- LOGIN FORM -->
 
 <div id="loginForm">
 
-<input type="text"
-       id="loginUser"
-       placeholder="Username">
+<input type="text" id="loginUser" placeholder="Username">
 
-<input type="password"
-       id="loginPass"
-       placeholder="Password">
+<input type="password" id="loginPass" placeholder="Password">
 
-<button class="main-button"
-        onclick="login()">
-
+<button class="green" onclick="login()">
 Login
-
 </button>
 
 </div>
 
-<!-- SIGNUP -->
+<!-- SIGNUP FORM -->
 
 <div id="signupForm" class="hidden">
 
-<input type="text"
-       id="signupUser"
-       placeholder="Create Username">
+<input type="text" id="signupUser" placeholder="Create Username">
 
-<input type="password"
-       id="signupPass"
-       placeholder="Create Password">
+<input type="password" id="signupPass" placeholder="Create Password">
 
-<button class="main-button"
-        onclick="signup()">
-
+<button class="green" onclick="signup()">
 Create Account
-
 </button>
 
 </div>
 
-<p style="text-align:center;margin:20px 0;">
-Continue with Google
-</p>
-
-<button class="google"
-        onclick="fakeGoogleLogin()">
-
-Google
-
-</button>
-
 </div>
 
-<!-- MODE SCREEN -->
+<!-- MODE -->
 
-<div class="card hidden"
-     id="modeScreen">
+<div class="card hidden" id="modeScreen">
 
 <h1>Choose Mode</h1>
 
-<button class="main-button"
-        onclick="showGrade()">
-
-Play At Home
-
+<button class="green" onclick="showGrades()">
+Home Mode
 </button>
 
-<button class="main-button"
-        onclick="showGrade()">
-
-Play At School
-
+<button class="green" onclick="showGrades()">
+School Mode
 </button>
 
 </div>
 
-<!-- GRADE SCREEN -->
+<!-- GRADES -->
 
-<div class="card hidden"
-     id="gradeScreen">
+<div class="card hidden" id="gradeScreen">
 
 <h1>Select Grade</h1>
 
-<button class="main-button"
-        onclick="selectGrade('grade1')">
-
-Grade 1
-
-</button>
-
-<button class="main-button"
-        onclick="selectGrade('grade2')">
-
-Grade 2
-
-</button>
-
-<button class="main-button"
-        onclick="selectGrade('grade3')">
-
-Grade 3
-
-</button>
+<button class="green" onclick="selectGrade(1)">Grade 1</button>
+<button class="green" onclick="selectGrade(2)">Grade 2</button>
+<button class="green" onclick="selectGrade(3)">Grade 3</button>
+<button class="green" onclick="selectGrade(4)">Grade 4</button>
+<button class="green" onclick="selectGrade(5)">Grade 5</button>
+<button class="green" onclick="selectGrade(6)">Grade 6</button>
 
 </div>
 
-<!-- SUBJECT SCREEN -->
+<!-- SUBJECTS -->
 
-<div class="card hidden"
-     id="subjectScreen">
+<div class="card hidden" id="subjectScreen">
 
 <h1>Choose Subject</h1>
 
-<button class="main-button"
-        onclick="selectSubject('math')">
-
+<button class="green" onclick="startBattle('math')">
 Math
-
 </button>
 
-<button class="main-button"
-        onclick="selectSubject('english')">
-
+<button class="green" onclick="startBattle('english')">
 Language Arts
-
 </button>
 
-<button class="main-button"
-        onclick="selectSubject('science')">
-
+<button class="green" onclick="startBattle('science')">
 Science
-
 </button>
+
+</div>
 
 </div>
 
 <!-- BATTLE SCREEN -->
 
-<div class="battle-screen hidden"
-     id="battleScreen">
+<div class="battle-screen hidden" id="battleScreen">
 
-<!-- ENEMY -->
-
-<div class="enemy">
-
-<img src="https://i.imgur.com/9Xn4F6Y.png">
-
-<h2>Shadow Dragon</h2>
-
-<div class="enemy-health"
-     id="enemyHealth">
-
-</div>
-
-</div>
+<div class="battle-top">
 
 <!-- PLAYER -->
 
 <div class="player">
 
-<img src="https://i.imgur.com/Yqz8D9B.png">
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
 
 <h2>Hero</h2>
 
-<div class="player-health"
-     id="playerHealth">
-
+<div class="hp-bar">
+<div class="hp-fill" id="playerHP" style="width:100%;"></div>
 </div>
 
 </div>
 
-<!-- QUESTION AREA -->
+<!-- ENEMY -->
+
+<div class="enemy">
+
+<img src="https://cdn-icons-png.flaticon.com/512/188/188987.png">
+
+<h2>Shadow Dragon</h2>
+
+<div class="hp-bar">
+<div class="hp-fill" id="enemyHP" style="width:100%;"></div>
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTION -->
 
 <div class="question-box">
 
-<div class="question-text"
-     id="questionText">
-
-Question Here
-
+<div class="question" id="questionText">
+2 + 2
 </div>
 
 <div class="answer-row">
 
-<input type="text"
-       id="answerInput"
-       placeholder="Type answer...">
+<input type="text" id="answerInput" placeholder="Type answer...">
 
-<button class="main-button"
-        onclick="checkAnswer()">
-
+<button class="green" onclick="checkAnswer()">
 Attack
-
 </button>
 
 </div>
@@ -437,116 +362,81 @@ Attack
 
 </div>
 
-</div>
-
-<script src="questions.js"></script>
-
 <script>
-
-let selectedGrade = "";
-let selectedSubject = "";
-let currentQuestion = null;
-
-let enemyHP = 100;
-let playerHP = 100;
 
 /* BAD WORDS */
 
 const bannedWords = [
-  "sex",
-  "hate",
-  "kill",
-  "badword"
+"fuck",
+"shit",
+"bitch",
+"ass",
+"sex",
+"nude",
+"fucker"
 ];
 
-/* AUTO LOGIN */
-
-window.onload = function(){
-
-  let loggedIn =
-    localStorage.getItem("loggedIn");
-
-  if(loggedIn === "true"){
-
-    showMode();
-
-  }
-
-}
-
-/* LOGIN / SIGNUP */
+/* LOGIN */
 
 function showSignup(){
-
-  document.getElementById("loginForm")
-    .classList.add("hidden");
-
-  document.getElementById("signupForm")
-    .classList.remove("hidden");
-
+document.getElementById("signupForm").classList.remove("hidden");
+document.getElementById("loginForm").classList.add("hidden");
 }
 
 function showLogin(){
-
-  document.getElementById("signupForm")
-    .classList.add("hidden");
-
-  document.getElementById("loginForm")
-    .classList.remove("hidden");
-
+document.getElementById("loginForm").classList.remove("hidden");
+document.getElementById("signupForm").classList.add("hidden");
 }
 
 /* SIGNUP */
 
 function signup(){
 
-  let username =
-    document.getElementById("signupUser")
-    .value
-    .toLowerCase();
+let username =
+document.getElementById("signupUser").value.trim();
 
-  let password =
-    document.getElementById("signupPass")
-    .value;
+let password =
+document.getElementById("signupPass").value.trim();
 
-  if(username === "" || password === ""){
+if(username === "" || password === ""){
+alert("Fill everything");
+return;
+}
 
-    alert("Fill everything out.");
+/* BAD WORD CHECK */
 
-    return;
+for(let word of bannedWords){
 
-  }
+if(username.toLowerCase().includes(word) ||
+password.toLowerCase().includes(word)){
 
-  for(let word of bannedWords){
+alert("Use appropriate username and password");
+return;
 
-    if(username.includes(word)){
+}
 
-      alert("Inappropriate username.");
+}
 
-      return;
+/* ACCOUNT EXISTS */
 
-    }
+if(localStorage.getItem(username)){
+alert("Username already exists");
+return;
+}
 
-  }
+/* SAVE */
 
-  let existingUser =
-    localStorage.getItem("username");
+let account = {
+password: password
+};
 
-  if(username === existingUser){
+localStorage.setItem(username, JSON.stringify(account));
 
-    alert("Username already exists.");
+localStorage.setItem("loggedIn", username);
 
-    return;
+alert("Account created!");
 
-  }
-
-  localStorage.setItem("username", username);
-
-  localStorage.setItem("password", password);
-
-  localStorage.setItem("loggedIn", "true");
-
-  showMode();
+showMode();
 
 }
 
@@ -554,43 +444,30 @@ function signup(){
 
 function login(){
 
-  let username =
-    document.getElementById("loginUser")
-    .value
-    .toLowerCase();
+let username =
+document.getElementById("loginUser").value.trim();
 
-  let password =
-    document.getElementById("loginPass")
-    .value;
+let password =
+document.getElementById("loginPass").value.trim();
 
-  let savedUser =
-    localStorage.getItem("username");
+let account =
+localStorage.getItem(username);
 
-  let savedPass =
-    localStorage.getItem("password");
-
-  if(username === savedUser &&
-     password === savedPass){
-
-    localStorage.setItem("loggedIn", "true");
-
-    showMode();
-
-  }
-
-  else{
-
-    alert("Wrong username or password");
-
-  }
-
+if(!account){
+alert("Account not found");
+return;
 }
 
-/* GOOGLE */
+account = JSON.parse(account);
 
-function fakeGoogleLogin(){
+if(password !== account.password){
+alert("Wrong password");
+return;
+}
 
-  alert("Google Login Coming Soon!");
+localStorage.setItem("loggedIn", username);
+
+showMode();
 
 }
 
@@ -598,67 +475,113 @@ function fakeGoogleLogin(){
 
 function showMode(){
 
-  hideAll();
+hideAll();
 
-  document.getElementById("modeScreen")
-    .classList.remove("hidden");
+document.getElementById("modeScreen")
+.classList.remove("hidden");
 
-  document.getElementById("homeBtn")
-    .classList.remove("hidden");
-
-}
-
-/* GRADE */
-
-function showGrade(){
-
-  hideAll();
-
-  document.getElementById("gradeScreen")
-    .classList.remove("hidden");
+document.getElementById("homeBtn")
+.classList.remove("hidden");
 
 }
 
-/* SELECT GRADE */
+/* GRADES */
+
+function showGrades(){
+
+hideAll();
+
+document.getElementById("gradeScreen")
+.classList.remove("hidden");
+
+}
+
+let currentGrade = 1;
 
 function selectGrade(grade){
 
-  selectedGrade = grade;
+currentGrade = grade;
 
-  hideAll();
+hideAll();
 
-  document.getElementById("subjectScreen")
-    .classList.remove("hidden");
-
-}
-
-/* SUBJECT */
-
-function selectSubject(subject){
-
-  selectedSubject = subject;
-
-  startBattle();
+document.getElementById("subjectScreen")
+.classList.remove("hidden");
 
 }
 
-/* START BATTLE */
+/* QUESTIONS */
 
-function startBattle(){
+let currentAnswer = 0;
+let enemyHealth = 100;
+let playerHealth = 100;
 
-  hideAll();
+function startBattle(subject){
 
-  document.getElementById("battleScreen")
-    .classList.remove("hidden");
+hideAll();
 
-  let questionList =
-    questions[selectedGrade][selectedSubject];
+document.getElementById("battleScreen")
+.classList.remove("hidden");
 
-  currentQuestion = questionList[0];
+generateQuestion(subject);
 
-  document.getElementById("questionText")
-    .innerText =
-    currentQuestion.question;
+}
+
+/* QUESTION GENERATOR */
+
+function generateQuestion(subject){
+
+let question = "";
+
+if(subject === "math"){
+
+if(currentGrade <= 2){
+
+let a = Math.floor(Math.random()*10);
+let b = Math.floor(Math.random()*10);
+
+question = `${a} + ${b}`;
+currentAnswer = a + b;
+
+}
+
+else if(currentGrade <= 4){
+
+let a = Math.floor(Math.random()*50);
+let b = Math.floor(Math.random()*20);
+
+question = `${a} - ${b}`;
+currentAnswer = a - b;
+
+}
+
+else{
+
+let a = Math.floor(Math.random()*12);
+let b = Math.floor(Math.random()*12);
+
+question = `${a} × ${b}`;
+currentAnswer = a * b;
+
+}
+
+}
+
+if(subject === "english"){
+
+question = "What is a noun?";
+currentAnswer = "person";
+
+}
+
+if(subject === "science"){
+
+question = "What planet do we live on?";
+currentAnswer = "earth";
+
+}
+
+document.getElementById("questionText")
+.innerText = question;
 
 }
 
@@ -666,53 +589,79 @@ function startBattle(){
 
 function checkAnswer(){
 
-  let answer =
-    document.getElementById("answerInput")
-    .value
-    .toLowerCase();
+let input =
+document.getElementById("answerInput")
+.value.trim().toLowerCase();
 
-  let correct =
-    currentQuestion.answer
-    .toLowerCase();
+if(input == currentAnswer){
 
-  if(answer === correct){
+enemyHealth -= 20;
 
-    enemyHP -= 25;
+if(enemyHealth < 0){
+enemyHealth = 0;
+}
 
-    if(enemyHP < 0){
+document.getElementById("enemyHP")
+.style.width = enemyHealth + "%";
 
-      enemyHP = 0;
+alert("Correct! Attack hit!");
 
-    }
+}else{
 
-    document.getElementById("enemyHealth")
-      .style.width =
-      enemyHP + "%";
+playerHealth -= 20;
 
-    alert("Correct Attack!");
+if(playerHealth < 0){
+playerHealth = 0;
+}
 
-  }
+document.getElementById("playerHP")
+.style.width = playerHealth + "%";
 
-  else{
+alert("Wrong answer!");
 
-    playerHP -= 25;
+}
 
-    if(playerHP < 0){
+document.getElementById("answerInput").value = "";
 
-      playerHP = 0;
+if(enemyHealth <= 0){
 
-    }
+alert("You won!");
 
-    document.getElementById("playerHealth")
-      .style.width =
-      playerHP + "%";
+enemyHealth = 100;
+playerHealth = 100;
 
-    alert("Wrong Answer!");
+document.getElementById("enemyHP")
+.style.width = "100%";
 
-  }
+document.getElementById("playerHP")
+.style.width = "100%";
 
-  document.getElementById("answerInput")
-    .value = "";
+showSubjects();
+
+return;
+
+}
+
+if(playerHealth <= 0){
+
+alert("You lost!");
+
+enemyHealth = 100;
+playerHealth = 100;
+
+document.getElementById("enemyHP")
+.style.width = "100%";
+
+document.getElementById("playerHP")
+.style.width = "100%";
+
+showSubjects();
+
+return;
+
+}
+
+generateQuestion("math");
 
 }
 
@@ -720,36 +669,50 @@ function checkAnswer(){
 
 function goHome(){
 
-  hideAll();
+localStorage.removeItem("loggedIn");
 
-  document.getElementById("authScreen")
-    .classList.remove("hidden");
+hideAll();
 
-  document.getElementById("homeBtn")
-    .classList.add("hidden");
+document.getElementById("loginScreen")
+.classList.remove("hidden");
 
-  localStorage.setItem("loggedIn", "false");
+document.getElementById("homeBtn")
+.classList.add("hidden");
 
 }
 
-/* HIDE ALL */
+/* HIDE */
 
 function hideAll(){
 
-  document.getElementById("authScreen")
-    .classList.add("hidden");
+document.getElementById("loginScreen")
+.classList.add("hidden");
 
-  document.getElementById("modeScreen")
-    .classList.add("hidden");
+document.getElementById("modeScreen")
+.classList.add("hidden");
 
-  document.getElementById("gradeScreen")
-    .classList.add("hidden");
+document.getElementById("gradeScreen")
+.classList.add("hidden");
 
-  document.getElementById("subjectScreen")
-    .classList.add("hidden");
+document.getElementById("subjectScreen")
+.classList.add("hidden");
 
-  document.getElementById("battleScreen")
-    .classList.add("hidden");
+document.getElementById("battleScreen")
+.classList.add("hidden");
+
+}
+
+/* AUTO LOGIN */
+
+window.onload = function(){
+
+let loggedIn = localStorage.getItem("loggedIn");
+
+if(loggedIn){
+
+showMode();
+
+}
 
 }
 
