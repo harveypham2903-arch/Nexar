@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Velixar</title>
+<title>Velyra</title>
 
 <style>
 
@@ -12,7 +12,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial;
+    font-family:Arial, sans-serif;
 }
 
 body{
@@ -22,22 +22,22 @@ body{
 
 /* HOME BUTTON */
 
-#homeBtn{
+.home-btn{
     position:fixed;
     top:15px;
     left:15px;
-    padding:10px 18px;
+    padding:12px 20px;
+    background:#ff914d;
+    color:white;
     border:none;
     border-radius:12px;
-    background:#ff8c42;
-    color:white;
-    font-size:18px;
     cursor:pointer;
+    font-size:16px;
     z-index:999;
 }
 
-#homeBtn:hover{
-    background:#ff7420;
+.home-btn:hover{
+    background:#ff7b26;
 }
 
 /* SCREENS */
@@ -51,142 +51,240 @@ body{
 }
 
 .hidden{
-    display:none !important;
+    display:none;
 }
 
-/* LOGIN */
+/* CARD */
 
 .card{
-    width:420px;
     background:#f5ead7;
-    padding:35px;
+    padding:40px;
     border-radius:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    width:500px;
+    max-width:90%;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
 .card h1{
-    text-align:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
+    font-size:42px;
 }
 
-input{
-    width:100%;
-    padding:14px;
-    margin-bottom:15px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-}
+/* BUTTONS */
 
 button{
+    border:none;
     cursor:pointer;
+    transition:0.3s;
 }
 
 .main-btn{
     width:100%;
-    padding:14px;
-    border:none;
+    padding:15px;
+    margin-top:12px;
     border-radius:12px;
     background:#35b87f;
     color:white;
     font-size:18px;
-    margin-bottom:12px;
 }
 
 .main-btn:hover{
-    background:#2d9e6d;
+    background:#2da56f;
 }
 
-.switch-btn{
-    background:#4da6ff;
-}
+/* CHARACTER CREATOR */
 
-.top-buttons{
+.creator-container{
+    width:900px;
+    max-width:95%;
+    background:#f5ead7;
+    border-radius:25px;
+    padding:30px;
     display:flex;
-    gap:10px;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.preview-box{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.player{
+    position:relative;
+    width:180px;
+    height:320px;
+}
+
+/* HAIR */
+
+.hair{
+    position:absolute;
+    top:20px;
+    left:40px;
+    width:100px;
+    height:60px;
+    background:#3b2414;
+    border-radius:50px 50px 20px 20px;
+    z-index:3;
+}
+
+/* FACE */
+
+.face{
+    position:absolute;
+    top:50px;
+    left:50px;
+    width:80px;
+    height:90px;
+    background:#f1c27d;
+    border-radius:45px;
+    z-index:2;
+}
+
+/* EYES */
+
+.eyes{
+    position:absolute;
+    top:90px;
+    left:72px;
+    width:35px;
+    height:8px;
+    background:black;
+    border-radius:10px;
+    z-index:4;
+}
+
+/* BODY */
+
+.body-part{
+    position:absolute;
+    top:145px;
+    left:45px;
+    width:90px;
+    height:90px;
+    background:#4da6ff;
+    border-radius:20px;
+}
+
+/* LEGS */
+
+.legs{
+    position:absolute;
+    top:230px;
+    left:55px;
+    width:70px;
+    height:80px;
+    background:#333;
+    border-radius:15px;
+}
+
+/* OPTIONS */
+
+.options{
+    flex:1;
+}
+
+.options h2{
     margin-bottom:20px;
 }
 
-/* CHARACTER */
-
-.gender-buttons button,
-.outfit-buttons button{
-    margin-bottom:12px;
+.option-group{
+    margin-bottom:20px;
 }
 
-/* GAME WORLD */
+.option-group h3{
+    margin-bottom:10px;
+}
 
-#gameWorld{
-    position:relative;
+.option-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.option-row button{
+    padding:10px 15px;
+    border-radius:10px;
+    background:#ff914d;
+    color:white;
+    font-weight:bold;
+}
+
+.option-row button:hover{
+    background:#ff7b26;
+}
+
+/* HOUSE */
+
+.house-screen{
     width:100vw;
     height:100vh;
     background:#d9b382;
-    overflow:hidden;
+    position:relative;
 }
 
 /* PLAYER */
 
-#player{
-    width:60px;
-    height:90px;
-    background:#4da6ff;
+.game-player{
+    width:50px;
+    height:70px;
     position:absolute;
-    left:700px;
-    top:420px;
+    background:#4da6ff;
     border-radius:15px;
+    left:150px;
+    top:400px;
 }
 
 /* DAD */
 
-#dad{
-    width:60px;
-    height:90px;
-    background:#3cb878;
+.dad{
+    width:55px;
+    height:75px;
     position:absolute;
-    left:350px;
-    top:230px;
+    background:#35b87f;
     border-radius:15px;
+    left:450px;
+    top:250px;
 }
 
 /* DOOR */
 
-#door{
+.door{
     width:90px;
-    height:120px;
-    background:#7b4b20;
+    height:140px;
+    background:#6b3e26;
     position:absolute;
-    right:100px;
-    top:220px;
+    right:80px;
+    bottom:120px;
     border-radius:10px;
 }
 
-/* DIALOGUE */
+/* DIALOG */
 
-#dialogueBox{
+.dialog-box{
     position:absolute;
-    bottom:40px;
+    bottom:30px;
     left:50%;
     transform:translateX(-50%);
     width:80%;
     background:white;
-    border-radius:25px;
-    padding:30px;
-    font-size:24px;
+    border-radius:20px;
+    padding:25px;
+    font-size:22px;
     line-height:1.5;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
-#spaceText{
-    margin-top:20px;
-    font-size:18px;
+.space-text{
+    margin-top:10px;
     color:gray;
-}
-
-/* BUTTON GROUPS */
-
-.grade-buttons button,
-.mode-buttons button{
-    margin-bottom:12px;
+    font-size:16px;
 }
 
 </style>
@@ -196,348 +294,184 @@ button{
 
 <!-- HOME BUTTON -->
 
-<button id="homeBtn" class="hidden" onclick="goHome()">
+<button class="home-btn" onclick="goHome()">
 Home
 </button>
 
-<!-- LOGIN SCREEN -->
+<!-- CHARACTER CREATOR -->
 
-<div class="screen" id="loginScreen">
+<div class="screen" id="creatorScreen">
 
-<div class="card">
+    <div class="creator-container">
 
-<h1>Welcome To Velixar</h1>
+        <!-- PREVIEW -->
 
-<div class="top-buttons">
+        <div class="preview-box">
 
-<button class="main-btn switch-btn" onclick="showLogin()">
-Login
-</button>
+            <div class="player">
 
-<button class="main-btn switch-btn" onclick="showSignup()">
-Sign Up
-</button>
+                <div class="hair" id="hair"></div>
 
-</div>
+                <div class="face" id="face"></div>
 
-<!-- LOGIN -->
+                <div class="eyes"></div>
 
-<div id="loginForm">
+                <div class="body-part" id="shirt"></div>
 
-<input type="text" id="loginUser" placeholder="Username">
+                <div class="legs" id="pants"></div>
 
-<input type="password" id="loginPass" placeholder="Password">
+            </div>
 
-<button class="main-btn" onclick="login()">
-Login
-</button>
+        </div>
 
-</div>
+        <!-- OPTIONS -->
 
-<!-- SIGNUP -->
+        <div class="options">
 
-<div id="signupForm" class="hidden">
+            <h2>Create Character</h2>
 
-<input type="text" id="signupUser" placeholder="Create Username">
+            <!-- SKIN -->
 
-<input type="password" id="signupPass" placeholder="Create Password">
+            <div class="option-group">
 
-<button class="main-btn" onclick="signup()">
-Create Account
-</button>
+                <h3>Skin Color</h3>
 
-</div>
+                <div class="option-row">
 
-</div>
+                    <button onclick="setSkin('#f1c27d')">Light</button>
 
-</div>
+                    <button onclick="setSkin('#d8a36d')">Tan</button>
 
-<!-- MODE SCREEN -->
+                    <button onclick="setSkin('#8d5524')">Dark</button>
 
-<div class="screen hidden" id="modeScreen">
+                </div>
 
-<div class="card">
+            </div>
 
-<h1>Choose Mode</h1>
+            <!-- HAIR -->
 
-<div class="mode-buttons">
+            <div class="option-group">
 
-<button class="main-btn" onclick="showGrade()">
-Play At Home
-</button>
+                <h3>Hair Color</h3>
 
-<button class="main-btn" onclick="showGrade()">
-Play At School
-</button>
+                <div class="option-row">
 
-</div>
+                    <button onclick="setHair('#3b2414')">Black</button>
 
-</div>
+                    <button onclick="setHair('#7a4a28')">Brown</button>
 
-</div>
+                    <button onclick="setHair('#f5d142')">Blonde</button>
 
-<!-- GRADE SCREEN -->
+                    <button onclick="setHair('#ff4d4d')">Red</button>
 
-<div class="screen hidden" id="gradeScreen">
+                </div>
 
-<div class="card">
+            </div>
 
-<h1>Select Grade</h1>
+            <!-- SHIRT -->
 
-<div class="grade-buttons">
+            <div class="option-group">
 
-<button class="main-btn" onclick="showCharacter()">
-Grade 1
-</button>
+                <h3>Shirt Color</h3>
 
-<button class="main-btn" onclick="showCharacter()">
-Grade 2
-</button>
+                <div class="option-row">
 
-<button class="main-btn" onclick="showCharacter()">
-Grade 3
-</button>
+                    <button onclick="setShirt('#4da6ff')">Blue</button>
 
-<button class="main-btn" onclick="showCharacter()">
-Grade 4
-</button>
+                    <button onclick="setShirt('#ff4d4d')">Red</button>
 
-<button class="main-btn" onclick="showCharacter()">
-Grade 5
-</button>
+                    <button onclick="setShirt('#35b87f')">Green</button>
 
-<button class="main-btn" onclick="showCharacter()">
-Grade 6
-</button>
+                    <button onclick="setShirt('#a64dff')">Purple</button>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+            <!-- PANTS -->
 
-<!-- CHARACTER SCREEN -->
+            <div class="option-group">
 
-<div class="screen hidden" id="characterScreen">
+                <h3>Pants Color</h3>
 
-<div class="card">
+                <div class="option-row">
 
-<h1>Create Character</h1>
+                    <button onclick="setPants('#333')">Black</button>
 
-<h2>Choose Gender</h2>
+                    <button onclick="setPants('#1d4ed8')">Blue</button>
 
-<div class="gender-buttons">
+                    <button onclick="setPants('#5c4033')">Brown</button>
 
-<button class="main-btn" onclick="chooseGender('boy')">
-Boy
-</button>
+                </div>
 
-<button class="main-btn" onclick="chooseGender('girl')">
-Girl
-</button>
+            </div>
+
+            <button class="main-btn" onclick="startGame()">
+                Start Adventure
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
-<h2>Choose Outfit</h2>
+<!-- HOUSE -->
 
-<div class="outfit-buttons">
+<div class="screen hidden" id="houseScreen">
 
-<button class="main-btn" onclick="chooseOutfit('blue')">
-Blue Outfit
-</button>
+    <div class="house-screen">
 
-<button class="main-btn" onclick="chooseOutfit('red')">
-Red Outfit
-</button>
+        <div class="game-player" id="gamePlayer"></div>
 
-<button class="main-btn" onclick="startGame()">
-Start Adventure
-</button>
+        <div class="dad"></div>
 
-</div>
+        <div class="door"></div>
 
-</div>
+        <!-- DIALOG -->
 
-</div>
+        <div class="dialog-box" id="dialogBox">
 
-<!-- GAME -->
+            <div id="dialogText">
+                Hey Player! Are you ready to begin your adventure?<br><br>
+                Go visit Professor Harvey in his laboratory to choose your starter pet!
+            </div>
 
-<div id="gameWorld" class="hidden">
+            <div class="space-text">
+                Press SPACE to continue
+            </div>
 
-<div id="dad"></div>
+        </div>
 
-<div id="door"></div>
-
-<div id="player"></div>
-
-<div id="dialogueBox">
-
-<p id="dialogueText">
-Hey, player! Are you ready to begin your adventure?<br><br>
-Go visit Professor Harvey in his laboratory to choose your starter pet!
-</p>
-
-<p id="spaceText">
-Press SPACE to continue
-</p>
-
-</div>
+    </div>
 
 </div>
 
 <script>
 
-let currentUser = "";
+/* COLORS */
 
-let badWords = [
-"fuck",
-"bitch",
-"shit",
-"asshole",
-"fucker"
-];
+function setSkin(color){
 
-/* AUTO LOGIN */
-
-window.onload = function(){
-
-let savedLogin = localStorage.getItem("loggedIn");
-
-if(savedLogin === "true"){
-
-showMode();
+    document.getElementById("face").style.background = color;
 
 }
 
-}
+function setHair(color){
 
-/* LOGIN / SIGNUP */
-
-function showSignup(){
-
-document.getElementById("signupForm").classList.remove("hidden");
-document.getElementById("loginForm").classList.add("hidden");
+    document.getElementById("hair").style.background = color;
 
 }
 
-function showLogin(){
+function setShirt(color){
 
-document.getElementById("loginForm").classList.remove("hidden");
-document.getElementById("signupForm").classList.add("hidden");
-
-}
-
-function containsBadWord(text){
-
-text = text.toLowerCase();
-
-for(let i=0;i<badWords.length;i++){
-
-if(text.includes(badWords[i])){
-
-return true;
+    document.getElementById("shirt").style.background = color;
 
 }
 
-}
+function setPants(color){
 
-return false;
-
-}
-
-function signup(){
-
-let username = document.getElementById("signupUser").value;
-let password = document.getElementById("signupPass").value;
-
-if(containsBadWord(username) || containsBadWord(password)){
-
-alert("Inappropriate username or password.");
-return;
-
-}
-
-if(localStorage.getItem(username)){
-
-alert("Username already exists.");
-return;
-
-}
-
-localStorage.setItem(username, password);
-
-localStorage.setItem("loggedIn", "true");
-localStorage.setItem("currentUser", username);
-
-currentUser = username;
-
-showMode();
-
-}
-
-function login(){
-
-let username = document.getElementById("loginUser").value;
-let password = document.getElementById("loginPass").value;
-
-let savedPass = localStorage.getItem(username);
-
-if(savedPass === password){
-
-localStorage.setItem("loggedIn", "true");
-localStorage.setItem("currentUser", username);
-
-currentUser = username;
-
-showMode();
-
-}else{
-
-alert("Wrong username or password");
-
-}
-
-}
-
-/* MODE */
-
-function showMode(){
-
-hideAll();
-
-document.getElementById("modeScreen").classList.remove("hidden");
-
-}
-
-/* GRADE */
-
-function showGrade(){
-
-hideAll();
-
-document.getElementById("gradeScreen").classList.remove("hidden");
-
-}
-
-/* CHARACTER */
-
-function showCharacter(){
-
-hideAll();
-
-document.getElementById("characterScreen").classList.remove("hidden");
-
-}
-
-function chooseGender(gender){
-
-localStorage.setItem("gender", gender);
-
-}
-
-function chooseOutfit(outfit){
-
-localStorage.setItem("outfit", outfit);
+    document.getElementById("pants").style.background = color;
 
 }
 
@@ -545,30 +479,23 @@ localStorage.setItem("outfit", outfit);
 
 function startGame(){
 
-hideAll();
+    document.getElementById("creatorScreen").classList.add("hidden");
 
-document.getElementById("gameWorld").classList.remove("hidden");
-
-/* SHOW HOME BUTTON ONLY IN GAME */
-
-document.getElementById("homeBtn").classList.remove("hidden");
-
-let user = localStorage.getItem("currentUser");
-
-document.getElementById("dialogueText").innerHTML =
-"Hey, " + user + "! Are you ready to begin your adventure?<br><br>Go visit Professor Harvey in his laboratory to choose your starter pet!";
+    document.getElementById("houseScreen").classList.remove("hidden");
 
 }
 
-/* SPACE CLOSES DIALOGUE */
+/* SPACE CLOSES DIALOG */
 
 document.addEventListener("keydown", function(e){
 
-if(e.code === "Space"){
+    if(e.code === "Space"){
 
-document.getElementById("dialogueBox").style.display = "none";
+        let box = document.getElementById("dialogBox");
 
-}
+        box.style.display = "none";
+
+    }
 
 });
 
@@ -576,26 +503,7 @@ document.getElementById("dialogueBox").style.display = "none";
 
 function goHome(){
 
-localStorage.setItem("loggedIn", "false");
-
-document.getElementById("gameWorld").classList.add("hidden");
-
-document.getElementById("homeBtn").classList.add("hidden");
-
-hideAll();
-
-document.getElementById("loginScreen").classList.remove("hidden");
-
-}
-
-/* HIDE ALL */
-
-function hideAll(){
-
-document.getElementById("loginScreen").classList.add("hidden");
-document.getElementById("modeScreen").classList.add("hidden");
-document.getElementById("gradeScreen").classList.add("hidden");
-document.getElementById("characterScreen").classList.add("hidden");
+    location.reload();
 
 }
 
