@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Nexar</title>
 
 <style>
@@ -11,12 +12,20 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
     background:#9fe3f5;
-    min-height:100vh;
+    overflow:hidden;
+}
+
+/* BUTTONS */
+
+button{
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
 }
 
 /* HOME BUTTON */
@@ -25,13 +34,14 @@ body{
     position:fixed;
     top:15px;
     left:15px;
-    padding:10px 16px;
-    border:none;
-    border-radius:10px;
+
+    padding:10px 18px;
+
     background:#ff8c42;
     color:white;
-    cursor:pointer;
+
     font-size:16px;
+
     z-index:1000;
 }
 
@@ -46,7 +56,6 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    padding:20px;
 }
 
 /* CARD */
@@ -64,45 +73,41 @@ h1{
     text-align:center;
     margin-bottom:25px;
     font-size:42px;
-    color:#333;
 }
 
 input{
     width:100%;
     padding:15px;
     margin-bottom:15px;
+
     border:none;
     border-radius:12px;
+
     font-size:16px;
 }
 
-button{
+.green{
     width:100%;
     padding:15px;
-    border:none;
-    border-radius:12px;
-    font-size:18px;
-    cursor:pointer;
-}
 
-.green{
     background:#35b87f;
     color:white;
-    margin-bottom:12px;
-}
 
-.green:hover{
-    background:#2ea16f;
+    font-size:18px;
+
+    margin-bottom:12px;
 }
 
 .blue{
+    width:100%;
+    padding:15px;
+
     background:#4da6ff;
     color:white;
-    margin-bottom:12px;
-}
 
-.hidden{
-    display:none;
+    font-size:18px;
+
+    margin-bottom:12px;
 }
 
 .top-buttons{
@@ -111,92 +116,84 @@ button{
     margin-bottom:20px;
 }
 
-.top-buttons button{
-    flex:1;
+.hidden{
+    display:none;
 }
 
-/* BATTLE */
+/* GAME MAP */
 
-.battle-screen{
-    width:100%;
+#gameScreen{
+    width:100vw;
     height:100vh;
-    display:flex;
-    flex-direction:column;
+
+    background:#c89b6d;
+
+    position:relative;
 }
 
-.battle-top{
-    flex:1;
+/* HOUSE FLOOR */
+
+.house-floor{
+    width:100%;
+    height:100%;
+
+    background:#deb887;
+
     position:relative;
-    padding:40px;
 }
 
 /* PLAYER */
 
-.player{
+#player{
+    width:60px;
+    height:60px;
+
+    background:#4da6ff;
+
+    border-radius:50%;
+
     position:absolute;
-    left:80px;
-    bottom:40px;
-    text-align:center;
+
+    left:120px;
+    top:300px;
 }
 
-.player img{
-    width:180px;
-}
+/* DAD */
 
-/* ENEMY */
+#dad{
+    width:60px;
+    height:60px;
 
-.enemy{
+    background:#35b87f;
+
+    border-radius:50%;
+
     position:absolute;
-    right:80px;
-    top:40px;
-    text-align:center;
+
+    left:350px;
+    top:200px;
 }
 
-.enemy img{
-    width:180px;
-}
+/* DIALOGUE */
 
-/* HP */
+#dialogueBox{
+    position:absolute;
 
-.hp-bar{
-    width:160px;
-    height:20px;
-    background:#ddd;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:80%;
+
+    background:white;
+
+    padding:25px;
+
     border-radius:20px;
-    overflow:hidden;
-    margin-top:10px;
-}
 
-.hp-fill{
-    height:100%;
-    background:green;
-}
+    font-size:24px;
 
-/* QUESTION BOX */
-
-.question-box{
-    background:#f5ead7;
-    padding:30px;
-    border-top:5px solid #333;
-}
-
-.question{
-    font-size:40px;
-    margin-bottom:20px;
-    font-weight:bold;
-}
-
-.answer-row{
-    display:flex;
-    gap:10px;
-}
-
-.answer-row input{
-    margin-bottom:0;
-}
-
-.answer-row button{
-    width:200px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 </style>
@@ -204,157 +201,109 @@ button{
 
 <body>
 
-<button class="home-btn hidden" id="homeBtn" onclick="goHome()">
-Home
-</button>
+<!-- HOME -->
 
-<div class="center">
+<button class="home-btn hidden"
+id="homeBtn"
+onclick="goHome()">
+
+Home
+
+</button>
 
 <!-- LOGIN -->
 
-<div class="card" id="loginScreen">
+<div class="center" id="loginScreen">
+
+<div class="card">
 
 <h1>Welcome to Nexar</h1>
 
 <div class="top-buttons">
-<button class="blue" onclick="showLogin()">Login</button>
-<button class="blue" onclick="showSignup()">Sign Up</button>
+
+<button class="blue"
+onclick="showLogin()">
+
+Login
+
+</button>
+
+<button class="blue"
+onclick="showSignup()">
+
+Sign Up
+
+</button>
+
 </div>
 
 <!-- LOGIN FORM -->
 
 <div id="loginForm">
 
-<input type="text" id="loginUser" placeholder="Username">
+<input type="text"
+id="loginUser"
+placeholder="Username">
 
-<input type="password" id="loginPass" placeholder="Password">
+<input type="password"
+id="loginPass"
+placeholder="Password">
 
-<button class="green" onclick="login()">
+<button class="green"
+onclick="login()">
+
 Login
+
 </button>
 
 </div>
 
 <!-- SIGNUP FORM -->
 
-<div id="signupForm" class="hidden">
+<div id="signupForm"
+class="hidden">
 
-<input type="text" id="signupUser" placeholder="Create Username">
+<input type="text"
+id="signupUser"
+placeholder="Create Username">
 
-<input type="password" id="signupPass" placeholder="Create Password">
+<input type="password"
+id="signupPass"
+placeholder="Create Password">
 
-<button class="green" onclick="signup()">
+<button class="green"
+onclick="signup()">
+
 Create Account
+
 </button>
 
 </div>
 
 </div>
 
-<!-- MODE -->
-
-<div class="card hidden" id="modeScreen">
-
-<h1>Choose Mode</h1>
-
-<button class="green" onclick="showGrades()">
-Home Mode
-</button>
-
-<button class="green" onclick="showGrades()">
-School Mode
-</button>
-
 </div>
 
-<!-- GRADES -->
+<!-- GAME -->
 
-<div class="card hidden" id="gradeScreen">
+<div id="gameScreen"
+class="hidden">
 
-<h1>Select Grade</h1>
-
-<button class="green" onclick="selectGrade(1)">Grade 1</button>
-<button class="green" onclick="selectGrade(2)">Grade 2</button>
-<button class="green" onclick="selectGrade(3)">Grade 3</button>
-<button class="green" onclick="selectGrade(4)">Grade 4</button>
-<button class="green" onclick="selectGrade(5)">Grade 5</button>
-<button class="green" onclick="selectGrade(6)">Grade 6</button>
-
-</div>
-
-<!-- SUBJECTS -->
-
-<div class="card hidden" id="subjectScreen">
-
-<h1>Choose Subject</h1>
-
-<button class="green" onclick="startBattle('math')">
-Math
-</button>
-
-<button class="green" onclick="startBattle('english')">
-Language Arts
-</button>
-
-<button class="green" onclick="startBattle('science')">
-Science
-</button>
-
-</div>
-
-</div>
-
-<!-- BATTLE SCREEN -->
-
-<div class="battle-screen hidden" id="battleScreen">
-
-<div class="battle-top">
+<div class="house-floor">
 
 <!-- PLAYER -->
 
-<div class="player">
+<div id="player"></div>
 
-<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+<!-- DAD -->
 
-<h2>Hero</h2>
+<div id="dad"></div>
 
-<div class="hp-bar">
-<div class="hp-fill" id="playerHP" style="width:100%;"></div>
-</div>
+<!-- DIALOGUE -->
 
-</div>
+<div id="dialogueBox">
 
-<!-- ENEMY -->
-
-<div class="enemy">
-
-<img src="https://cdn-icons-png.flaticon.com/512/188/188987.png">
-
-<h2>Shadow Dragon</h2>
-
-<div class="hp-bar">
-<div class="hp-fill" id="enemyHP" style="width:100%;"></div>
-</div>
-
-</div>
-
-</div>
-
-<!-- QUESTION -->
-
-<div class="question-box">
-
-<div class="question" id="questionText">
-2 + 2
-</div>
-
-<div class="answer-row">
-
-<input type="text" id="answerInput" placeholder="Type answer...">
-
-<button class="green" onclick="checkAnswer()">
-Attack
-</button>
+Press SPACE near Dad to talk.
 
 </div>
 
@@ -367,25 +316,44 @@ Attack
 /* BAD WORDS */
 
 const bannedWords = [
+
 "fuck",
+"fucker",
+"fucking",
 "shit",
 "bitch",
-"ass",
+"asshole",
+"porn",
 "sex",
 "nude",
-"fucker"
+"dick",
+"penis",
+"vagina",
+"niga",
+"nigga"
+
 ];
 
 /* LOGIN */
 
 function showSignup(){
-document.getElementById("signupForm").classList.remove("hidden");
-document.getElementById("loginForm").classList.add("hidden");
+
+document.getElementById("signupForm")
+.classList.remove("hidden");
+
+document.getElementById("loginForm")
+.classList.add("hidden");
+
 }
 
 function showLogin(){
-document.getElementById("loginForm").classList.remove("hidden");
-document.getElementById("signupForm").classList.add("hidden");
+
+document.getElementById("loginForm")
+.classList.remove("hidden");
+
+document.getElementById("signupForm")
+.classList.add("hidden");
+
 }
 
 /* SIGNUP */
@@ -393,22 +361,29 @@ document.getElementById("signupForm").classList.add("hidden");
 function signup(){
 
 let username =
-document.getElementById("signupUser").value.trim();
+document.getElementById("signupUser")
+.value.trim();
 
 let password =
-document.getElementById("signupPass").value.trim();
+document.getElementById("signupPass")
+.value.trim();
 
 if(username === "" || password === ""){
+
 alert("Fill everything");
 return;
+
 }
 
 /* BAD WORD CHECK */
 
 for(let word of bannedWords){
 
-if(username.toLowerCase().includes(word) ||
-password.toLowerCase().includes(word)){
+if(
+username.toLowerCase().includes(word)
+||
+password.toLowerCase().includes(word)
+){
 
 alert("Use appropriate username and password");
 return;
@@ -417,26 +392,23 @@ return;
 
 }
 
-/* ACCOUNT EXISTS */
-
-if(localStorage.getItem(username)){
-alert("Username already exists");
-return;
-}
-
-/* SAVE */
+/* SAVE ACCOUNT */
 
 let account = {
 password: password
 };
 
-localStorage.setItem(username, JSON.stringify(account));
+localStorage.setItem(
+username,
+JSON.stringify(account)
+);
 
-localStorage.setItem("loggedIn", username);
+localStorage.setItem(
+"loggedIn",
+username
+);
 
-alert("Account created!");
-
-showMode();
+startGame();
 
 }
 
@@ -445,39 +417,48 @@ showMode();
 function login(){
 
 let username =
-document.getElementById("loginUser").value.trim();
+document.getElementById("loginUser")
+.value.trim();
 
 let password =
-document.getElementById("loginPass").value.trim();
+document.getElementById("loginPass")
+.value.trim();
 
 let account =
 localStorage.getItem(username);
 
 if(!account){
+
 alert("Account not found");
 return;
+
 }
 
 account = JSON.parse(account);
 
 if(password !== account.password){
+
 alert("Wrong password");
 return;
-}
-
-localStorage.setItem("loggedIn", username);
-
-showMode();
 
 }
 
-/* MODE */
+localStorage.setItem(
+"loggedIn",
+username
+);
 
-function showMode(){
+startGame();
+
+}
+
+/* START GAME */
+
+function startGame(){
 
 hideAll();
 
-document.getElementById("modeScreen")
+document.getElementById("gameScreen")
 .classList.remove("hidden");
 
 document.getElementById("homeBtn")
@@ -485,191 +466,9 @@ document.getElementById("homeBtn")
 
 }
 
-/* GRADES */
-
-function showGrades(){
-
-hideAll();
-
-document.getElementById("gradeScreen")
-.classList.remove("hidden");
-
-}
-
-let currentGrade = 1;
-
-function selectGrade(grade){
-
-currentGrade = grade;
-
-hideAll();
-
-document.getElementById("subjectScreen")
-.classList.remove("hidden");
-
-}
-
-/* QUESTIONS */
-
-let currentAnswer = 0;
-let enemyHealth = 100;
-let playerHealth = 100;
-
-function startBattle(subject){
-
-hideAll();
-
-document.getElementById("battleScreen")
-.classList.remove("hidden");
-
-generateQuestion(subject);
-
-}
-
-/* QUESTION GENERATOR */
-
-function generateQuestion(subject){
-
-let question = "";
-
-if(subject === "math"){
-
-if(currentGrade <= 2){
-
-let a = Math.floor(Math.random()*10);
-let b = Math.floor(Math.random()*10);
-
-question = `${a} + ${b}`;
-currentAnswer = a + b;
-
-}
-
-else if(currentGrade <= 4){
-
-let a = Math.floor(Math.random()*50);
-let b = Math.floor(Math.random()*20);
-
-question = `${a} - ${b}`;
-currentAnswer = a - b;
-
-}
-
-else{
-
-let a = Math.floor(Math.random()*12);
-let b = Math.floor(Math.random()*12);
-
-question = `${a} × ${b}`;
-currentAnswer = a * b;
-
-}
-
-}
-
-if(subject === "english"){
-
-question = "What is a noun?";
-currentAnswer = "person";
-
-}
-
-if(subject === "science"){
-
-question = "What planet do we live on?";
-currentAnswer = "earth";
-
-}
-
-document.getElementById("questionText")
-.innerText = question;
-
-}
-
-/* CHECK ANSWER */
-
-function checkAnswer(){
-
-let input =
-document.getElementById("answerInput")
-.value.trim().toLowerCase();
-
-if(input == currentAnswer){
-
-enemyHealth -= 20;
-
-if(enemyHealth < 0){
-enemyHealth = 0;
-}
-
-document.getElementById("enemyHP")
-.style.width = enemyHealth + "%";
-
-alert("Correct! Attack hit!");
-
-}else{
-
-playerHealth -= 20;
-
-if(playerHealth < 0){
-playerHealth = 0;
-}
-
-document.getElementById("playerHP")
-.style.width = playerHealth + "%";
-
-alert("Wrong answer!");
-
-}
-
-document.getElementById("answerInput").value = "";
-
-if(enemyHealth <= 0){
-
-alert("You won!");
-
-enemyHealth = 100;
-playerHealth = 100;
-
-document.getElementById("enemyHP")
-.style.width = "100%";
-
-document.getElementById("playerHP")
-.style.width = "100%";
-
-showSubjects();
-
-return;
-
-}
-
-if(playerHealth <= 0){
-
-alert("You lost!");
-
-enemyHealth = 100;
-playerHealth = 100;
-
-document.getElementById("enemyHP")
-.style.width = "100%";
-
-document.getElementById("playerHP")
-.style.width = "100%";
-
-showSubjects();
-
-return;
-
-}
-
-generateQuestion("math");
-
-}
-
 /* HOME */
 
 function goHome(){
-
-localStorage.removeItem("loggedIn");
 
 hideAll();
 
@@ -688,16 +487,7 @@ function hideAll(){
 document.getElementById("loginScreen")
 .classList.add("hidden");
 
-document.getElementById("modeScreen")
-.classList.add("hidden");
-
-document.getElementById("gradeScreen")
-.classList.add("hidden");
-
-document.getElementById("subjectScreen")
-.classList.add("hidden");
-
-document.getElementById("battleScreen")
+document.getElementById("gameScreen")
 .classList.add("hidden");
 
 }
@@ -706,11 +496,82 @@ document.getElementById("battleScreen")
 
 window.onload = function(){
 
-let loggedIn = localStorage.getItem("loggedIn");
+let loggedIn =
+localStorage.getItem("loggedIn");
 
 if(loggedIn){
 
-showMode();
+startGame();
+
+}
+
+};
+
+/* MOVEMENT */
+
+let player =
+document.getElementById("player");
+
+let x = 120;
+let y = 300;
+
+document.addEventListener("keydown", function(e){
+
+if(document.getElementById("gameScreen")
+.classList.contains("hidden")) return;
+
+if(e.key === "ArrowUp"){
+y -= 10;
+}
+
+if(e.key === "ArrowDown"){
+y += 10;
+}
+
+if(e.key === "ArrowLeft"){
+x -= 10;
+}
+
+if(e.key === "ArrowRight"){
+x += 10;
+}
+
+player.style.left = x + "px";
+player.style.top = y + "px";
+
+/* TALK TO DAD */
+
+if(e.key === " "){
+
+talkToDad();
+
+}
+
+});
+
+/* DAD DIALOGUE */
+
+function talkToDad(){
+
+let dadX = 350;
+let dadY = 200;
+
+let distance =
+Math.abs(x - dadX)
++
+Math.abs(y - dadY);
+
+if(distance < 120){
+
+let username =
+localStorage.getItem("loggedIn");
+
+document.getElementById("dialogueBox")
+.innerText =
+
+`Hey, ${username}! Are you ready to begin your adventure?
+
+Go visit Professor Harvey in his laboratory to choose your starter pet!`;
 
 }
 
