@@ -51,7 +51,7 @@ body{
 }
 
 .hidden{
-    display:none;
+    display:none !important;
 }
 
 /* LOGIN */
@@ -114,7 +114,7 @@ button{
     margin-bottom:12px;
 }
 
-/* HOUSE */
+/* GAME WORLD */
 
 #gameWorld{
     position:relative;
@@ -176,22 +176,15 @@ button{
     box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* SPACE TEXT */
-
 #spaceText{
     margin-top:20px;
     font-size:18px;
     color:gray;
 }
 
-/* GRADE BUTTONS */
+/* BUTTON GROUPS */
 
-.grade-buttons button{
-    margin-bottom:12px;
-}
-
-/* MODE */
-
+.grade-buttons button,
 .mode-buttons button{
     margin-bottom:12px;
 }
@@ -201,7 +194,11 @@ button{
 
 <body>
 
-<button id="homeBtn" onclick="goHome()">Home</button>
+<!-- HOME BUTTON -->
+
+<button id="homeBtn" class="hidden" onclick="goHome()">
+Home
+</button>
 
 <!-- LOGIN SCREEN -->
 
@@ -414,7 +411,7 @@ showMode();
 
 }
 
-/* LOGIN */
+/* LOGIN / SIGNUP */
 
 function showSignup(){
 
@@ -552,6 +549,10 @@ hideAll();
 
 document.getElementById("gameWorld").classList.remove("hidden");
 
+/* SHOW HOME BUTTON ONLY IN GAME */
+
+document.getElementById("homeBtn").classList.remove("hidden");
+
 let user = localStorage.getItem("currentUser");
 
 document.getElementById("dialogueText").innerHTML =
@@ -571,15 +572,23 @@ document.getElementById("dialogueBox").style.display = "none";
 
 });
 
-/* HOME */
+/* HOME BUTTON */
 
 function goHome(){
 
-location.reload();
+localStorage.setItem("loggedIn", "false");
+
+document.getElementById("gameWorld").classList.add("hidden");
+
+document.getElementById("homeBtn").classList.add("hidden");
+
+hideAll();
+
+document.getElementById("loginScreen").classList.remove("hidden");
 
 }
 
-/* HIDE */
+/* HIDE ALL */
 
 function hideAll(){
 
