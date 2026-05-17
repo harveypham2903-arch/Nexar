@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Velyra</title>
+<title>Nexar</title>
 
 <style>
 
@@ -20,27 +20,7 @@ body{
     overflow:hidden;
 }
 
-/* HOME BUTTON */
-
-.home-btn{
-    position:fixed;
-    top:15px;
-    left:15px;
-    padding:12px 20px;
-    background:#ff914d;
-    color:white;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:16px;
-    z-index:999;
-}
-
-.home-btn:hover{
-    background:#ff7b26;
-}
-
-/* SCREENS */
+/* LOGIN */
 
 .screen{
     width:100vw;
@@ -50,241 +30,239 @@ body{
     align-items:center;
 }
 
-.hidden{
-    display:none;
-}
-
-/* CARD */
-
 .card{
     background:#f5ead7;
     padding:40px;
-    border-radius:25px;
-    width:500px;
-    max-width:90%;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    border-radius:20px;
+    width:400px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
 }
 
 .card h1{
-    margin-bottom:25px;
-    font-size:42px;
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
 }
 
-/* BUTTONS */
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
 
 button{
     border:none;
     cursor:pointer;
-    transition:0.3s;
 }
 
 .main-btn{
     width:100%;
     padding:15px;
-    margin-top:12px;
-    border-radius:12px;
     background:#35b87f;
     color:white;
-    font-size:18px;
-}
-
-.main-btn:hover{
-    background:#2da56f;
-}
-
-/* CHARACTER CREATOR */
-
-.creator-container{
-    width:900px;
-    max-width:95%;
-    background:#f5ead7;
-    border-radius:25px;
-    padding:30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:30px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2);
-}
-
-.preview-box{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.player{
-    position:relative;
-    width:180px;
-    height:320px;
-}
-
-/* HAIR */
-
-.hair{
-    position:absolute;
-    top:20px;
-    left:40px;
-    width:100px;
-    height:60px;
-    background:#3b2414;
-    border-radius:50px 50px 20px 20px;
-    z-index:3;
-}
-
-/* FACE */
-
-.face{
-    position:absolute;
-    top:50px;
-    left:50px;
-    width:80px;
-    height:90px;
-    background:#f1c27d;
-    border-radius:45px;
-    z-index:2;
-}
-
-/* EYES */
-
-.eyes{
-    position:absolute;
-    top:90px;
-    left:72px;
-    width:35px;
-    height:8px;
-    background:black;
     border-radius:10px;
-    z-index:4;
-}
-
-/* BODY */
-
-.body-part{
-    position:absolute;
-    top:145px;
-    left:45px;
-    width:90px;
-    height:90px;
-    background:#4da6ff;
-    border-radius:20px;
-}
-
-/* LEGS */
-
-.legs{
-    position:absolute;
-    top:230px;
-    left:55px;
-    width:70px;
-    height:80px;
-    background:#333;
-    border-radius:15px;
-}
-
-/* OPTIONS */
-
-.options{
-    flex:1;
-}
-
-.options h2{
-    margin-bottom:20px;
-}
-
-.option-group{
-    margin-bottom:20px;
-}
-
-.option-group h3{
+    font-size:18px;
     margin-bottom:10px;
 }
 
-.option-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.option-row button{
-    padding:10px 15px;
-    border-radius:10px;
-    background:#ff914d;
+.switch-btn{
+    width:100%;
+    padding:12px;
+    background:#4da6ff;
     color:white;
-    font-weight:bold;
+    border-radius:10px;
+    margin-bottom:10px;
 }
 
-.option-row button:hover{
-    background:#ff7b26;
+/* HOME BUTTON */
+
+#homeButton{
+    position:fixed;
+    top:15px;
+    left:15px;
+    padding:10px 18px;
+    background:#ff8c42;
+    color:white;
+    border-radius:12px;
+    z-index:999;
+    display:none;
+}
+
+/* GAME */
+
+#gameScreen{
+    display:none;
+    width:100vw;
+    height:100vh;
+    position:relative;
+    background:#d9b382;
 }
 
 /* HOUSE */
 
-.house-screen{
-    width:100vw;
-    height:100vh;
-    background:#d9b382;
-    position:relative;
+.house{
+    position:absolute;
+    width:420px;
+    height:300px;
+    background:#d9965b;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border:8px solid #8b5a2b;
 }
 
-/* PLAYER */
-
-.game-player{
-    width:50px;
-    height:70px;
+.floor{
     position:absolute;
-    background:#4da6ff;
-    border-radius:15px;
-    left:150px;
-    top:400px;
+    width:100%;
+    height:100%;
+    background:#d9b382;
+}
+
+.door{
+    position:absolute;
+    width:70px;
+    height:120px;
+    background:#5b3a1e;
+    bottom:0;
+    left:170px;
+}
+
+.dad{
+    position:absolute;
+    width:55px;
+    height:80px;
+    left:90px;
+    top:120px;
 }
 
 /* DAD */
 
-.dad{
-    width:55px;
-    height:75px;
-    position:absolute;
-    background:#35b87f;
-    border-radius:15px;
-    left:450px;
-    top:250px;
+.dad-head{
+    width:35px;
+    height:35px;
+    background:#f1c27d;
+    border-radius:50%;
+    margin:auto;
 }
 
-/* DOOR */
-
-.door{
-    width:90px;
-    height:140px;
-    background:#6b3e26;
-    position:absolute;
-    right:80px;
-    bottom:120px;
+.dad-body{
+    width:40px;
+    height:45px;
+    background:#3b82f6;
+    margin:auto;
     border-radius:10px;
+}
+
+/* PLAYER */
+
+.player{
+    position:absolute;
+    width:55px;
+    height:85px;
+    left:250px;
+    top:180px;
+}
+
+.head{
+    width:34px;
+    height:34px;
+    background:#8d5524;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+}
+
+.hair{
+    width:38px;
+    height:18px;
+    background:black;
+    border-radius:20px 20px 5px 5px;
+    position:absolute;
+    top:-4px;
+    left:-2px;
+}
+
+.body{
+    width:42px;
+    height:48px;
+    background:red;
+    margin:auto;
+    border-radius:10px;
+    position:relative;
+}
+
+.body::after{
+    content:'';
+    position:absolute;
+    width:10px;
+    height:48px;
+    background:white;
+    left:16px;
+}
+
+.legs{
+    width:42px;
+    height:18px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+}
+
+.leg{
+    width:14px;
+    height:18px;
+    background:#2563eb;
 }
 
 /* DIALOG */
 
-.dialog-box{
+.dialog{
     position:absolute;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    width:80%;
+    width:70%;
+    left:15%;
+    bottom:20px;
     background:white;
-    border-radius:20px;
     padding:25px;
-    font-size:22px;
-    line-height:1.5;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    border-radius:20px;
+    font-size:28px;
+    line-height:1.6;
+    box-shadow:0 5px 12px rgba(0,0,0,0.3);
 }
 
-.space-text{
-    margin-top:10px;
+.space{
+    margin-top:15px;
     color:gray;
-    font-size:16px;
+    font-size:18px;
+}
+
+/* CHARACTER */
+
+.choice-container{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.choice{
+    width:120px;
+    height:120px;
+    background:white;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* HIDDEN */
+
+.hidden{
+    display:none;
 }
 
 </style>
@@ -294,218 +272,292 @@ button{
 
 <!-- HOME BUTTON -->
 
-<button class="home-btn" onclick="goHome()">
+<button id="homeButton" onclick="goHome()">
 Home
 </button>
 
-<!-- CHARACTER CREATOR -->
+<!-- LOGIN SCREEN -->
 
-<div class="screen" id="creatorScreen">
+<div class="screen" id="loginScreen">
 
-    <div class="creator-container">
+<div class="card">
 
-        <!-- PREVIEW -->
+<h1>Welcome to Nexar</h1>
 
-        <div class="preview-box">
+<input type="text" id="username" placeholder="Username">
 
-            <div class="player">
+<input type="password" id="password" placeholder="Password">
 
-                <div class="hair" id="hair"></div>
+<button class="main-btn" onclick="login()">
+Login
+</button>
 
-                <div class="face" id="face"></div>
-
-                <div class="eyes"></div>
-
-                <div class="body-part" id="shirt"></div>
-
-                <div class="legs" id="pants"></div>
-
-            </div>
-
-        </div>
-
-        <!-- OPTIONS -->
-
-        <div class="options">
-
-            <h2>Create Character</h2>
-
-            <!-- SKIN -->
-
-            <div class="option-group">
-
-                <h3>Skin Color</h3>
-
-                <div class="option-row">
-
-                    <button onclick="setSkin('#f1c27d')">Light</button>
-
-                    <button onclick="setSkin('#d8a36d')">Tan</button>
-
-                    <button onclick="setSkin('#8d5524')">Dark</button>
-
-                </div>
-
-            </div>
-
-            <!-- HAIR -->
-
-            <div class="option-group">
-
-                <h3>Hair Color</h3>
-
-                <div class="option-row">
-
-                    <button onclick="setHair('#3b2414')">Black</button>
-
-                    <button onclick="setHair('#7a4a28')">Brown</button>
-
-                    <button onclick="setHair('#f5d142')">Blonde</button>
-
-                    <button onclick="setHair('#ff4d4d')">Red</button>
-
-                </div>
-
-            </div>
-
-            <!-- SHIRT -->
-
-            <div class="option-group">
-
-                <h3>Shirt Color</h3>
-
-                <div class="option-row">
-
-                    <button onclick="setShirt('#4da6ff')">Blue</button>
-
-                    <button onclick="setShirt('#ff4d4d')">Red</button>
-
-                    <button onclick="setShirt('#35b87f')">Green</button>
-
-                    <button onclick="setShirt('#a64dff')">Purple</button>
-
-                </div>
-
-            </div>
-
-            <!-- PANTS -->
-
-            <div class="option-group">
-
-                <h3>Pants Color</h3>
-
-                <div class="option-row">
-
-                    <button onclick="setPants('#333')">Black</button>
-
-                    <button onclick="setPants('#1d4ed8')">Blue</button>
-
-                    <button onclick="setPants('#5c4033')">Brown</button>
-
-                </div>
-
-            </div>
-
-            <button class="main-btn" onclick="startGame()">
-                Start Adventure
-            </button>
-
-        </div>
-
-    </div>
+<button class="switch-btn" onclick="signup()">
+Sign Up
+</button>
 
 </div>
 
-<!-- HOUSE -->
+</div>
 
-<div class="screen hidden" id="houseScreen">
+<!-- MODE SCREEN -->
 
-    <div class="house-screen">
+<div class="screen hidden" id="modeScreen">
 
-        <div class="game-player" id="gamePlayer"></div>
+<div class="card">
 
-        <div class="dad"></div>
+<h1>Choose Mode</h1>
 
-        <div class="door"></div>
+<button class="main-btn" onclick="selectMode()">
+Home Mode
+</button>
 
-        <!-- DIALOG -->
+<button class="main-btn" onclick="selectMode()">
+School Mode
+</button>
 
-        <div class="dialog-box" id="dialogBox">
+</div>
 
-            <div id="dialogText">
-                Hey Player! Are you ready to begin your adventure?<br><br>
-                Go visit Professor Harvey in his laboratory to choose your starter pet!
-            </div>
+</div>
 
-            <div class="space-text">
-                Press SPACE to continue
-            </div>
+<!-- GRADE SCREEN -->
 
-        </div>
+<div class="screen hidden" id="gradeScreen">
 
-    </div>
+<div class="card">
+
+<h1>Select Grade</h1>
+
+<button class="main-btn" onclick="chooseGrade(1)">Grade 1</button>
+<button class="main-btn" onclick="chooseGrade(2)">Grade 2</button>
+<button class="main-btn" onclick="chooseGrade(3)">Grade 3</button>
+<button class="main-btn" onclick="chooseGrade(4)">Grade 4</button>
+<button class="main-btn" onclick="chooseGrade(5)">Grade 5</button>
+<button class="main-btn" onclick="chooseGrade(6)">Grade 6</button>
+
+</div>
+
+</div>
+
+<!-- CHARACTER CREATOR -->
+
+<div class="screen hidden" id="characterScreen">
+
+<div class="card">
+
+<h1>Choose Character</h1>
+
+<div class="choice-container">
+
+<div class="choice" onclick="startGame('boy')">
+Boy
+</div>
+
+<div class="choice" onclick="startGame('girl')">
+Girl
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GAME -->
+
+<div id="gameScreen">
+
+<div class="house">
+
+<div class="floor"></div>
+
+<div class="door"></div>
+
+<!-- DAD -->
+
+<div class="dad">
+
+<div class="dad-head"></div>
+
+<div class="dad-body"></div>
+
+</div>
+
+<!-- PLAYER -->
+
+<div class="player" id="player">
+
+<div class="head">
+
+<div class="hair"></div>
+
+</div>
+
+<div class="body"></div>
+
+<div class="legs">
+
+<div class="leg"></div>
+<div class="leg"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DIALOG -->
+
+<div class="dialog" id="dialogBox">
+
+<p id="dialogText">
+Hey Player! Are you ready to begin your adventure?
+Go visit Professor Harvey in his laboratory to choose your starter pet!
+</p>
+
+<div class="space">
+Press SPACE to continue
+</div>
+
+</div>
 
 </div>
 
 <script>
 
-/* COLORS */
+/* BAD WORDS */
 
-function setSkin(color){
+const badWords = [
+"fuck","bitch","shit","asshole","fucker"
+];
 
-    document.getElementById("face").style.background = color;
+/* LOGIN */
+
+function signup(){
+
+let user = document.getElementById("username").value.trim();
+let pass = document.getElementById("password").value.trim();
+
+if(user === "" || pass === ""){
+alert("Fill everything.");
+return;
+}
+
+let lowerUser = user.toLowerCase();
+
+for(let word of badWords){
+
+if(lowerUser.includes(word)){
+alert("Inappropriate username.");
+return;
+}
 
 }
 
-function setHair(color){
+if(localStorage.getItem(user)){
+alert("Account already exists.");
+return;
+}
 
-    document.getElementById("hair").style.background = color;
+localStorage.setItem(user, pass);
+localStorage.setItem("currentUser", user);
+
+showMode();
 
 }
 
-function setShirt(color){
+function login(){
 
-    document.getElementById("shirt").style.background = color;
+let user = document.getElementById("username").value.trim();
+let pass = document.getElementById("password").value.trim();
+
+let savedPass = localStorage.getItem(user);
+
+if(savedPass === pass){
+
+localStorage.setItem("currentUser", user);
+
+showMode();
+
+}else{
+
+alert("Wrong username or password.");
 
 }
 
-function setPants(color){
+}
 
-    document.getElementById("pants").style.background = color;
+/* MODE */
+
+function showMode(){
+
+document.getElementById("loginScreen").classList.add("hidden");
+
+document.getElementById("modeScreen").classList.remove("hidden");
+
+}
+
+/* GRADE */
+
+function selectMode(){
+
+document.getElementById("modeScreen").classList.add("hidden");
+
+document.getElementById("gradeScreen").classList.remove("hidden");
+
+}
+
+function chooseGrade(grade){
+
+localStorage.setItem("grade", grade);
+
+document.getElementById("gradeScreen").classList.add("hidden");
+
+document.getElementById("characterScreen").classList.remove("hidden");
 
 }
 
 /* START GAME */
 
-function startGame(){
+function startGame(type){
 
-    document.getElementById("creatorScreen").classList.add("hidden");
+document.getElementById("characterScreen").classList.add("hidden");
 
-    document.getElementById("houseScreen").classList.remove("hidden");
+document.getElementById("gameScreen").style.display = "block";
+
+document.getElementById("homeButton").style.display = "block";
 
 }
 
-/* SPACE CLOSES DIALOG */
-
-document.addEventListener("keydown", function(e){
-
-    if(e.code === "Space"){
-
-        let box = document.getElementById("dialogBox");
-
-        box.style.display = "none";
-
-    }
-
-});
-
-/* HOME BUTTON */
+/* HOME */
 
 function goHome(){
 
-    location.reload();
+document.getElementById("gameScreen").style.display = "none";
+
+document.getElementById("modeScreen").classList.add("hidden");
+
+document.getElementById("gradeScreen").classList.add("hidden");
+
+document.getElementById("characterScreen").classList.add("hidden");
+
+document.getElementById("loginScreen").classList.remove("hidden");
+
+document.getElementById("homeButton").style.display = "none";
 
 }
+
+/* SPACE */
+
+document.addEventListener("keydown", function(e){
+
+if(e.code === "Space"){
+
+document.getElementById("dialogBox").style.display = "none";
+
+}
+
+});
 
 </script>
 
